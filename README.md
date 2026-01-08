@@ -1,4 +1,4 @@
-# Your startup name here
+# Drawdle
 
 [My Notes](notes.md)
 
@@ -25,8 +25,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+The app is a daily game where you draw something new every day. Each day, a new prompt appears, and you have 90 seconds to draw a picture. you can the share those designs with your friends, and then improve over time.
 ### Design
 
 ![Design image](placeholder.png)
