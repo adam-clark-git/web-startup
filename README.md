@@ -49,9 +49,9 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
+- **HTML** - Uses HTML to create pages for Introduction and Log In, Drawing, and Sharing.
+- **CSS** - Styling to work with both PC and phone usage and a simple design to let user pictures pop.
+- **React** - Provides Log In, Drawing Functionality, Timer, Changing Color and Brush Size, and displaying other user pictures. Single page for more active design.
 - **Service** - Description here
 - **DB/Login** - Description here
 - **WebSocket** - Description here
