@@ -19,7 +19,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
-- [ ] Description of key features
+- [x] Description of key features
 - [x] Description of how you will use each technology
 - [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
@@ -41,9 +41,14 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Drawing functionality
+- Ability to change color and brush size
+- Secure Log In
+- Registration
+- Timer functionality, automatically ends when time is reached.
+- Ability to share picture via web server
+- Vote on other users images, and see other people's votes in real time.
+- Pictures are persistently stored.
 
 ### Technologies
 
