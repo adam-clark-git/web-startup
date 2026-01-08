@@ -25,7 +25,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-The best way to start your day is with a little bit of creativity. With Drawdle, every day you get a new prompt and are challenged to draw it in 90 seconds. It's fast paced to encourage you to not stress over minor mistakes, while still pushing you to explore your creativity and get better at art. You can then share those designs with your friends, and see how other people interpeted the prompt.
+The best way to start your day is with a little bit of creativity. With Drawdle, every day you get a new prompt and are challenged to draw it in 90 seconds. It's fast paced to encourage you to not stress over minor mistakes, while still pushing you to explore your creativity and get better at art. You can then share those designs with your friends, and rate other poeple's interpretation of the prompt.
 ### Design
 
 ![Design image](DrawdleDesign.jpg)
@@ -52,9 +52,13 @@ I am going to use the required technologies in the following ways.
 - **HTML** - Uses HTML to create pages for Introduction and Log In, Drawing, and Sharing.
 - **CSS** - Styling to work with both PC and phone usage and a simple design to let user pictures pop.
 - **React** - Provides Log In, Drawing Functionality, Timer, Changing Color and Brush Size, and displaying other user pictures. Single page for more active design.
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **Service** - Backend endpoints for:
+    * User Authentication. User log in, log out and register, with all credentials being safely stored in server.
+    * Uploading picture to Server
+    * Displaying other stored images.
+    * Updating the prompt for each day.
+- **DB/Login** - Stores user authentication, as well as pictures for each topic.
+- **WebSocket** - Updating prompt at the end of every day, as well as seeing likes of yours and others prompts live.
 
 ## 🚀 AWS deliverable
 
