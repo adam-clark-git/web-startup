@@ -62,7 +62,7 @@ I am going to use the required technologies in the following ways.
     * Uploading picture to Server
     * Displaying other stored images.
     * Updating the prompt for each day.
-- **DB/Login** - Stores user authentication, as well as pictures for each topic.
+- **DB/Login** - Stores user authentication, as well as pictures for each topic. Also stores rating scores for each picture.
 - **WebSocket** - Updating prompt at the end of every day, as well as seeing likes of yours and others prompts live.
 
 ## 🚀 AWS deliverable
