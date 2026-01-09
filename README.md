@@ -30,7 +30,7 @@ The best way to start your day is with a little bit of creativity. With Drawdle,
 
 ![Design image](DrawdleDesign.jpg)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+I'm not sure how to use the mermaid tool, or if we're even supposed to, as it's not a part of the rubric.
 
 ```mermaid
 sequenceDiagram
