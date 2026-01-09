@@ -30,7 +30,7 @@ The best way to start your day is with a little bit of creativity. With Drawdle,
 
 ![Design image](DrawdleDesign.jpg)
 
-I'm not sure how to use the mermaid tool, or if we're even supposed to, as it's not a part of the rubric.
+I contacted a TA who said that it was not required.
 
 ```mermaid
 sequenceDiagram
