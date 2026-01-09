@@ -25,7 +25,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-The best way to start your day is with a little bit of creativity. With Drawdle, every day you get a new prompt and are challenged to draw it in 90 seconds. It's fast paced to encourage you to not stress over minor mistakes, while still pushing you to explore your creativity and get better at art. You can then share those designs with your friends, and rate other poeple's interpretation of the prompt.
+The best way to start your day is with a little bit of creativity. With Drawdle, every day you get a new prompt and are challenged to draw it in 90 seconds. It's fast paced to encourage you to not stress over minor mistakes, while still pushing you to explore your creativity and get better at art. You can then share those designs with your friends and look at others interpretation of the prompt.
 ### Design
 
 ![Design image](DrawdleDesign.jpg)
