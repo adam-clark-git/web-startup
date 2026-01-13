@@ -4,11 +4,7 @@
 
 This a daily drawing game. Every day, you get a new prompt, and then are given a short amount of time to draw it using limited tools. The goal is to get your creativity flowing quickly, and to not get to in your head about the quality of the picture. When the 90 seconds are up, you can then publish your picture, or see other people's pictures given the same theme.
 
-> [!NOTE]
-> This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
-
-> [!NOTE]
-> If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing.
+The IP Address is 3.221.164.108
 
 ## 🚀 Specification Deliverable
 
