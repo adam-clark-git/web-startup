@@ -72,15 +72,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I created multiple pages, one for the home page, one for a gallery, one for websocket playing with friends, and one for playing the game.
+- [x] **Proper HTML element usage** - I had a mix of HTML elements, including a header with a nav, a main page, and a footer for my github link
+- [x] **Links** - I had links inside my navigation, as well as at the bottom of most of the pages for github.
+- [x] **Text** - I had text appropriate for each webpage, reflecting how they should look in the future.
+- [] **3rd party API placeholder** - I did not complete this part of the deliverable.
+- [x] **Images** - I have placeholder images, which will be replaced with images from the server.
+- [x] **Login placeholder** - I have a placeholder log in system, including messages for certain applications to require log in, along with log-in pages for all pages except for the main game.
+- [x] **DB data placeholder** - I have placeholder data in the prompts used, images represented, and images from other users.
+- [x] **WebSocket placeholder** - I have placeholder elements for when websocket functionality comes online.
 
 ## 🚀 CSS deliverable
 
