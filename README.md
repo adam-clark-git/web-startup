@@ -76,10 +76,10 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Proper HTML element usage** - I had a mix of HTML elements, including a header with a nav, a main page, and a footer for my github link
 - [x] **Links** - I had links inside my navigation, as well as at the bottom of most of the pages for github.
 - [x] **Text** - I had text appropriate for each webpage, reflecting how they should look in the future.
-- [] **3rd party API placeholder** - I did not complete this part of the deliverable.
+- [x] **3rd party API placeholder** - The prompts for each drawdle will be called with a third party API.
 - [x] **Images** - I have placeholder images, which will be replaced with images from the server.
 - [x] **Login placeholder** - I have a placeholder log in system, including messages for certain applications to require log in, along with log-in pages for all pages except for the main game.
-- [x] **DB data placeholder** - I have placeholder data in the prompts used, images represented, and images from other users.
+- [x] **DB data placeholder** - I have placeholder data in the images represented in the gallery, and images from other users.
 - [x] **WebSocket placeholder** - I have placeholder elements for when websocket functionality comes online.
 
 ## 🚀 CSS deliverable
