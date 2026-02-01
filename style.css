@@ -1,6 +1,3 @@
-.log-in-container {
-    background-color: azure;
-}
 body {
     display: flex;
     flex-direction: column;
@@ -37,6 +34,7 @@ footer {
 .log-in-container {
     width: 400px;
     flex-shrink: 0;
+    padding:10px;
 }
 nav {
     flex: 1;
