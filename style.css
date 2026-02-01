@@ -6,10 +6,10 @@ body {
     flex-direction: column;
     min-width: 375px;
     background-color: #cfcfcfc6;
+    min-height:100vh;
 }
 header {
-  height:200px;
-  flex-shrink: 0;
+  flex: 0 200px;
   background-color: #eaedff;
   display: flex;
   flex-direction: row;
@@ -22,8 +22,7 @@ main {
   align-items: center;
 }
 footer {
-  height: 30px;
-  flex-shrink: 0;
+  flex: 0 30;
   background-color: #ffd0d0;
 }
 #display-logged-in {
