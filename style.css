@@ -8,8 +8,11 @@ body {
     background-color: #cfcfcfc6;
 }
 header {
-  flex: 0 80px;
+  height:200px;
+  flex-shrink: 0;
   background-color: #eaedff;
+  display: flex;
+  flex-direction: row;
 }
 main {
   flex: 1;
@@ -19,7 +22,8 @@ main {
   align-items: center;
 }
 footer {
-  flex: 0 30px;
+  height: 30px;
+  flex-shrink: 0;
   background-color: #ffd0d0;
 }
 #display-logged-in {
@@ -30,4 +34,11 @@ footer {
 }
 .info {
     display: none
+}
+.log-in-container {
+    width: 400px;
+    flex-shrink: 0;
+}
+nav {
+    flex: 1;
 }
