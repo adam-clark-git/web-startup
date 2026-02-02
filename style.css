@@ -71,3 +71,18 @@ nav {
     text-decoration: none;
 
 }
+.frontpage button, .frontpage a {
+    margin:20px;
+}
+#main-play {
+    font-size:2em;
+}
+.my-button {
+    transition: transform 0.2s ease !important;
+}
+.my-button:hover {
+    transform: scale(1.1) !important;
+}
+.my-button:active {
+    transform: scale(0.9) !important;
+}
