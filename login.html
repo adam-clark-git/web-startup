@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title> Drawdle </title>
+        <link rel="stylesheet" href="style.css">
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <h1 class="logo"> 
+                <a href="index.html" class="nav-link">
+                    Drawdle 
+                </a>
+                </h1>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="drawfriends.html" class="nav-link">Draw With Friends</a>
+            </nav>
+        </header>     
+        <main class="frontpage">
+            <div class="log-in-container">
+                <form>
+                    <p> Log in to store and share your art with others! </p>
+                    <ul>
+                        <li>
+                            <label for="text">Email:</label>
+                            <input type="email" id="email" name="varEmail"/>
+                        </li>
+                        <li>
+                            <label for="text">Password:</label>
+                            <input type="password" id="password" name="varPassword"/>
+                        </li>
+                    </ul>
+                    <button id="login"  type="button" class="btn btn-outline-primary"> Log In </button>
+                </form>
+                <form class="modal-sign-up">
+                    <p> Don't have an account?</p>
+                    <ul>
+                        <li>
+                            <label for="text">Username:</label>
+                            <input type="text" id="name" name="varName"/>
+                        </li>
+                        <li>
+                            <label for="text">Email:</label>
+                            <input type="email" id="email" name="varEmail"/>
+                        </li>
+                        <li>
+                            <label for="text">Password:</label>
+                            <input type="password" id="password" name="varPassword"/>
+                        </li>
+                    </ul>
+                </form>
+                <button id="sign-up"  type="button" class="btn btn-outline-primary"> Sign Up </button>
+                <!-- Will not exist at the same time as the log in-->
+                <div id="display-logged-in">
+                    <p id="confirmation-login"> Email: sample@gmail.com</p>
+                    <button id="log-out"  type="button" class="btn btn-outline-primary"> Log Out</button>
+                </div>
+                
+            </div>
+        </main>
+        <div class="info">
+            <span class="close">&times;</span>
+            <p>
+               Haven't played Drawdle before? Here are the rules. 
+               You have 90 seconds to draw a picture from scratch, trying to interpret the prompt as best you can.
+               The tools and time are very limiting, so don't worry about drawing something that doesn't look great.
+               Try to stretch your creativity, and don't stress out about it!
+            </p>
+        </div>
+        <footer>
+            <a id="githublink" href="https://github.com/adam-clark-git/web-startup"> Github Page</a>
+        </footer>
+    </body>
+</html>
