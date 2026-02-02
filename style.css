@@ -88,3 +88,16 @@ nav {
 .my-button:active {
     transform: scale(0.9) !important;
 }
+
+@media (orientation: portrait) {
+    .hide-vertical {
+        display: none;
+    }
+    .log-in-container {
+        display: flex;
+        align-items: center;
+        width: 100px;
+    }
+
+
+}
