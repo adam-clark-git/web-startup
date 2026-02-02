@@ -88,7 +88,11 @@ nav {
 .my-button:active {
     transform: scale(0.9) !important;
 }
-
+ul {
+    list-style-type: none;
+    padding-left: 0 !important;
+    margin-left: 0
+}
 @media (orientation: portrait) {
     .hide-vertical {
         display: none;
