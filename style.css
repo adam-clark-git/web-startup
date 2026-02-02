@@ -15,7 +15,7 @@ body {
 }
 header {
   flex: 0 200px;
-  background-color: #eaedff;
+  background-color: #d0e8ff;
   display: flex;
   flex-direction: row;
 }
@@ -28,7 +28,9 @@ main {
 }
 footer {
   flex: 0 30;
-  background-color: #ffd0d0;
+  padding:5px;
+  background-color: #d0e8ff;
+  text-align: right;
 }
 #display-logged-in {
     display:none
