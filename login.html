@@ -23,47 +23,45 @@
                 <a href="gallery.html" class="playwrite-nz-basic-reg nav-item no-decoration">Gallery</a>
             </nav>
         </header>     
-        <main class="frontpage">
-            <div class="log-in-container">
-                <form>
-                    <p> Log in to store and share your art with others! </p>
-                    <ul>
-                        <li>
-                            <label for="text">Email:</label>
-                            <input type="email" id="email" name="varEmail"/>
-                        </li>
-                        <li>
-                            <label for="text">Password:</label>
-                            <input type="password" id="password" name="varPassword"/>
-                        </li>
-                    </ul>
-                    <button id="login"  type="button" class="btn btn-outline-primary"> Log In </button>
-                </form>
-                <form class="modal-sign-up">
-                    <p> Don't have an account?</p>
-                    <ul>
-                        <li>
-                            <label for="text">Username:</label>
-                            <input type="text" id="name" name="varName"/>
-                        </li>
-                        <li>
-                            <label for="text">Email:</label>
-                            <input type="email" id="email" name="varEmail"/>
-                        </li>
-                        <li>
-                            <label for="text">Password:</label>
-                            <input type="password" id="password" name="varPassword"/>
-                        </li>
-                    </ul>
-                </form>
+        <main class="login-page">
+            <form>
+                <p> Log in to store and share your art with others! </p>
+                <ul>
+                    <li>
+                        <label for="text">Email:</label>
+                        <input type="email" id="email" name="varEmail"/>
+                    </li>
+                    <li>
+                        <label for="text">Password:</label>
+                        <input type="password" id="password" name="varPassword"/>
+                    </li>
+                </ul>
+                <button id="login"  type="button" class="btn btn-outline-primary"> Log In </button>
+                <p> Don't have an account?</p>
+                <ul>
+                    <li>
+                        <label for="text">Username:</label>
+                        <input type="text" id="name" name="varName"/>
+                    </li>
+                    <li>
+                        <label for="text">Email:</label>
+                        <input type="email" id="email" name="varEmail"/>
+                    </li>
+                    <li>
+                        <label for="text">Password:</label>
+                        <input type="password" id="password" name="varPassword"/>
+                    </li>
+                </ul>
                 <button id="sign-up"  type="button" class="btn btn-outline-primary"> Sign Up </button>
-                <!-- Will not exist at the same time as the log in-->
-                <div id="display-logged-in">
-                    <p id="confirmation-login"> Email: sample@gmail.com</p>
-                    <button id="log-out"  type="button" class="btn btn-outline-primary"> Log Out</button>
-                </div>
+            </form>
                 
+            
+            <!-- Will not exist at the same time as the log in-->
+            <div id="display-logged-in">
+                <p id="confirmation-login"> Email: sample@gmail.com</p>
+                <button id="log-out"  type="button" class="btn btn-outline-primary"> Log Out</button>
             </div>
+            
         </main>
         <div class="info">
             <span class="close">&times;</span>
