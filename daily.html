@@ -13,29 +13,37 @@
         />
     </head>
     <body>
+        <header id="game-header">
+            <button class="info-button"> Info </button>
+            <div class="timer"> 1:30 <button class="pause"> Pause </button> </div>
+        </header>
+        
+
         <main id="game">
             <div id="game-content">
-                <div id="canvas"></div>
-                <div id="color-bar">
-                    <div class="color-group">
-                        <input type="radio" id="color1-select" name="varColor" value="color1-select">
-                        <input type="color" name="varColor" id="color1"/>
-                    </div>
-                    <div class="color-group">
-                        <input type="radio" id="color2-select" name="varColor" value="color2-select">
-                        <input type="color" name="varColor" id="color2"/>
-                    </div>
-                    <div class="color-group">
-                        <input type="radio" id="color3-select" name="varColor" value="color3-select">
-                        <input type="color" name="varColor" id="color3"/>
-                    </div>
-                    <div class="color-group">
-                        <input type="radio" id="color4-select" name="varColor" value="color4-select">
-                        <input type="color" name="varColor" id="color4"/>
-                    </div>
-                    <div class="color-group">
-                        <input type="radio" id="color1-select" name="varColor" value="color5-select">
-                        <input type="color" name="varColor" id="color5"/>
+                <div class="row-align">
+                    <div id="canvas"></div>
+                    <div id="color-bar">
+                        <div class="color-group">
+                            <input type="radio" id="color1-select" name="varColor" value="color1-select">
+                            <input type="color" name="varColor" id="color1"/>
+                        </div>
+                        <div class="color-group">
+                            <input type="radio" id="color2-select" name="varColor" value="color2-select">
+                            <input type="color" name="varColor" id="color2"/>
+                        </div>
+                        <div class="color-group">
+                            <input type="radio" id="color3-select" name="varColor" value="color3-select">
+                            <input type="color" name="varColor" id="color3"/>
+                        </div>
+                        <div class="color-group">
+                            <input type="radio" id="color4-select" name="varColor" value="color4-select">
+                            <input type="color" name="varColor" id="color4"/>
+                        </div>
+                        <div class="color-group">
+                            <input type="radio" id="color1-select" name="varColor" value="color5-select">
+                            <input type="color" name="varColor" id="color5"/>
+                        </div>
                     </div>
                 </div>
                 <div id="brush-slider">
