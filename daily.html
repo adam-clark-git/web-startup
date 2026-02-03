@@ -55,7 +55,7 @@
             <button class="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#finished"> Finished </button>
             <button class="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#waiting-for-others"> TestMultiplayer1 </button>
             <button class="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#rate-others"> TestMultiplayer2 </button>
-            <button class="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#finished"> TestMultiplayer3 </button>
+            <button class="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#display-masterpiece"> TestMultiplayer3 </button>
         </main>
         <div class="modal fade" id="info-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -153,19 +153,26 @@
                 </div>
             </div>
         </div>
-        <div class="display-masterpiece">
-            <h3 class="congrats">
-                Great Job!
-            </h3>
-            <div class="art-selection">
-                <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
+        <div class="modal fade" id="display-masterpiece" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel"> Great Job! </h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="art-selection">
+                            <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
+                        </div>
+                        <p>
+                            This was the grand master piece!
+                        </p>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <a type="button" href="index.html" role="button" class="btn btn-secondary">Return to Home</a>
+                    </div>
+                </div>
             </div>
-            <p>
-                This was the grand master piece!
-            </p>
-            <a href="index.html">
-                Return to Home
-            </a>
         </div>
         <footer>
             <a class="no-decoration" id="githublink" href="https://github.com/adam-clark-git/web-startup"> Github Page</a>
