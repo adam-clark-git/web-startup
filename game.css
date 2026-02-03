@@ -29,21 +29,3 @@
     }
 
 }
-
-
-/* These are Modals, will be implemented with JS*/
-.finished {
-    display: none;
-}
-.info {
-    display: none;
-}
-.waiting-for-others {
-    display: none;
-}
-.rate-others {
-    display: none;
-}
-.display-masterpiece {
-    display: none;
-}
