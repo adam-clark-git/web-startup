@@ -86,10 +86,10 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **Visually appealing colors and layout. No overflowing elements.** - I added a simple color scheme to my website, and positioned elements in an appealing way. Some elements overflow when stretched.
-- [x] **Use of a CSS framework** - I used bootstrap for my button designs.
-- [ ] **All visual elements styled using CSS** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing using flexbox and/or grid display** - I did not complete this part of the deliverable.
+- [x] **Visually appealing colors and layout. No overflowing elements.** - I added a simple color scheme to my website, and positioned elements in an appealing way. There are no overflowing elements
+- [x] **Use of a CSS framework** - I used bootstrap for my button and modal designs.
+- [x] **All visual elements styled using CSS** - All elements have been styled with CSS. The header, footer, and body of each page has been styled.
+- [x] **Responsive to window resizing using flexbox and/or grid display** - The page is responsive to window resizing, with behavior for switching to vertical orientation and for screens with lower widths.
 - [x] **Use of a imported font** - I imported the Playwrite NZ font for my header.
 - [x] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I used element selectors (main, body, header), along with class (log-in-container, logo, no-decoration), as well as ID, (main-play,display-logged-in), and psuedo-selectors (:hover, :active)
 
