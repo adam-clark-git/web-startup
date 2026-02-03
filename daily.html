@@ -14,8 +14,8 @@
     </head>
     <body>
         <header id="game-header">
-            <button class="btn btn-outline-primary my-button info-button"> Info </button>
-            <div class="timer"> 1:30 <button class="btn btn-outline-primary my-button pause-button"> Pause </button> </div>
+            <button class="btn btn-outline-primary my-button info-button" data-bs-toggle="modal" data-bs-target="#info-modal"> Info </button>
+            <div class="timer"> 1:30 <button class="btn btn-outline-primary my-button pause-button" data-bs-toggle="modal" data-bs-target="#info-modal"> Pause </button> </div>
         </header>
         
 
@@ -54,17 +54,27 @@
             <p> Prompt: <h4 id="prompt"> "Springtime"</h4> </p>
             <button class="btn btn-primary my-button" id="submit-art"> Finished </button>
         </main>
-        <div class="info">
-            <span class="close">&times;</span>
-            <p>
-               Haven't played Drawdle before? Here are the rules. 
-               You have 90 seconds to draw a picture from scratch, trying to interpret the prompt as best you can.
-               The tools and time are very limiting, so don't worry about drawing something that doesn't look great.
-               Try to stretch your creativity, and don't stress out about it!
-            </p>
-            <a href="index.html">
-                Return to Home
-            </a>
+        <div class="modal fade" id="info-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel"> Info </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        TIMER PAUSED <br> <br>
+                        Haven't played Drawdle before? Here are the rules. <br> <br>
+                        You have 90 seconds to draw a picture from scratch, trying to interpret the prompt as best you can.
+                        The tools and time are very limiting, so don't worry about drawing something that doesn't look great.
+                        Try to stretch your creativity, and don't stress out about it! <br> <br>
+                        <a href="index.html">Return to Home</a>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="finished">
             <h3 class="congrats">
@@ -138,6 +148,6 @@
             <a class="no-decoration" href="index.html"> Home</a>
             <a class="no-decoration" id="githublink" href="https://github.com/adam-clark-git/web-startup"> Github Page</a>
         </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </body>
 </html>
