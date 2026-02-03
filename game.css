@@ -42,6 +42,17 @@
 .pause-button, .info-button {
     margin: 5px;
 }
+#brush-range {
+    vertical-align: middle;
+}
+label[for="brush-size"] {
+    vertical-align: middle;
+}
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media (max-width: 600px) {
     #canvas {
         height: 300px;
@@ -52,6 +63,8 @@
     }
     #color-bar {
         flex-direction: row;
+        display: flex;
+        align-items: center;
     }
     .color-grid {
         grid-auto-flow: row;
