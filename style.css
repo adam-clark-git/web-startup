@@ -57,16 +57,12 @@ nav {
     font-size:5em;
     transition: font-size 0.3s ease;
 }
-.logo:hover {
-    font-size: 5.5em;
-}
+
 .nav-item {
     font-size: 2em;
     transition: font-size 0.3s ease;
 }
-.nav-item:hover {
-    font-size:2.2em;
-}
+
 .no-decoration {
     text-decoration: none;
     color: black;
@@ -85,12 +81,7 @@ nav {
 .my-button {
     transition: transform 0.2s ease !important;
 }
-.my-button:hover {
-    transform: scale(1.1) !important;
-}
-.my-button:active {
-    transform: scale(0.9) !important;
-}
+
 ul {
     list-style-type: none;
     padding-left: 0 !important;
@@ -99,6 +90,21 @@ ul {
 .back-up-login {
     display: none !important;
 }
+@media (hover: hover) and (pointer: fine) {
+    .logo:hover {
+        font-size: 5.5em;
+    }
+    .nav-item:hover {
+        font-size:2.2em;
+    }
+    .my-button:hover {
+        transform: scale(1.1) !important;
+    }
+    .my-button:active {
+        transform: scale(0.9) !important;
+    }
+}
+
 @media (orientation: portrait) {
     .hide-vertical {
         display: none;
