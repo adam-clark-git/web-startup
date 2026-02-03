@@ -53,6 +53,9 @@
             </div>
             <p> Prompt: <h4 id="prompt"> "Springtime"</h4> </p>
             <button class="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#finished"> Finished </button>
+            <button class="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#waiting-for-others"> TestMultiplayer1 </button>
+            <button class="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#rate-others"> TestMultiplayer2 </button>
+            <button class="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#finished"> TestMultiplayer3 </button>
         </main>
         <div class="modal fade" id="info-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -106,35 +109,49 @@
                 </div>
             </div>
         </div>
-        <div class="waiting-for-others">
-            <h3 class="congrats">
-                Great Job!
-            </h3>
-            <p>
-                Waiting for other artists to finish...
-            </p>
+        <div class="modal fade" id="waiting-for-others" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel"> Great Job! </h1>
+                    </div>
+                    <div class="modal-body">
+                        Waiting for other artists to finish...
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="rate-others">
-            <h3 class="congrats">
-                Great Job!
-            </h3>
-            <p>
-                Now go rate your friends art pieces.
-            </p>
-            <p id="ratings-left">
-                You have 2 Thumbs up left.
-            </p>
-            <div class="prompt"> "Springtime"</div>
-            <div class="art-selection">
-                <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
-                <button class="rate-button">👍</button>
+        <div class="modal fade" id="rate-others" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel"> Great Job! </h1>
+                    </div>
+                    <div class="modal-body">
+                        <img alt="Your Art" src="images/ducksample.jpg" width="200px"/>
+                        <div class="prompt"> "Springtime"</div>
+                        <p>
+                            You made a piece of art! Now, rate your other friends art pieces, and the person with the highest score wins!
+                        </p>
+                        <p id="ratings-left">
+                            You have 2 Thumbs up left.
+                        </p>
+                        <div class="prompt"> "Springtime"</div>
+                        <div class="art-selection">
+                            <img alt="Other Art1" src="images/duck2.jpg" width="200px"/>
+                            <button type="button" class="btn btn-outline-secondary rate-button">👍</button>
+                        </div>
+                        <div class="art-selection">
+                            <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
+                            <button type="button" class="btn btn-outline-secondary rate-button">👍</button>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary finish-rating">Finish Rating</button>
+                    </div>
+                </div>
             </div>
-            <div class="art-selection">
-                <img alt="Other Art1" src="images/duck2.jpg" width="200px"/>
-                <button class="rate-button">👍</button>
-            </div>
-            <button class="finish-rating"> Finish Rating</button>
-            <p class="waiting-for-rating"> Waiting for Others...</p>
         </div>
         <div class="display-masterpiece">
             <h3 class="congrats">
