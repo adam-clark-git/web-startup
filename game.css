@@ -11,18 +11,38 @@
     outline-color: black, rgb(87, 87, 87);
     outline-style:inset;
 }
+#color-bar {
+    background-color: rgb(224, 224, 224);
+    box-shadow: 5px 2px 2px rgba(70, 70, 70, 0.305);
+}
+.color-grid {
+    display:grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(5, 1fr);
+}
 .row-align {
     display: flex;
     flex-direction: row;
 }
 .color-group {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    width:30px;
+    height:30px;
+    border:2px rgb(43, 43, 43) solid;
+    margin:5px;
+    border-radius: 5px;
+}
+#color-selector {
+    height: 45px;
+    width: 70px;
+    border:2px rgb(43, 43, 43) solid;
+    border-radius: 5px;
+    padding:0px;
+    margin:5px;
 }
 .pause-button, .info-button {
     margin: 5px;
 }
-@media (orientation: portrait) {
+@media (max-width: 600px) {
     #canvas {
         height: 300px;
         width:300px;
