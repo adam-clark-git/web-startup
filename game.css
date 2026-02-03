@@ -1,4 +1,7 @@
-
+#game-header {
+    flex: 0 0 30px;
+    justify-content: center;
+}
 #canvas {
     margin:10px;
     width:600px;
@@ -15,6 +18,9 @@
 .color-group {
     padding-top: 5px;
     padding-bottom: 5px;
+}
+.pause-button, .info-button {
+    margin: 5px;
 }
 @media (orientation: portrait) {
     #canvas {
