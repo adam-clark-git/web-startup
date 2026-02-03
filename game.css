@@ -1,6 +1,28 @@
 
+#canvas {
+    margin:10px;
+    width:600px;
+    height:400px;
+    background-color: rgb(247, 247, 247);
+    outline: 5px;
+    outline-color: black, rgb(87, 87, 87);
+    outline-style:inset;
+}
+.row-align {
+    display: flex;
+    flex-direction: row;
+}
+.color-group {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+@media (orientation: portrait) {
+    #canvas {
+        height: 300px;
+        width:300px;
+    }
 
-
+}
 
 
 /* These are Modals, will be implemented with JS*/
