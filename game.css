@@ -53,7 +53,7 @@ label[for="brush-size"] {
     justify-content: center;
     align-items: center;
 }
-@media (max-width: 600px) {
+@media (max-width: 715px) {
     #canvas {
         height: 300px;
         width:300px;
@@ -71,7 +71,5 @@ label[for="brush-size"] {
         grid-template-rows: none;
         grid-template-columns: repeat(5, auto);
         justify-content: start;
-    }
-    .color-group {
     }
 }
