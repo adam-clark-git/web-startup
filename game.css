@@ -47,5 +47,20 @@
         height: 300px;
         width:300px;
     }
-
+    .row-align {
+        flex-direction: column;
+    }
+    #color-bar {
+        flex-direction: row;
+    }
+    .color-grid {
+        grid-auto-flow: row;
+        grid-template-rows: none;
+        grid-template-columns: repeat(5, auto);
+        justify-content: start;
+    }
+    .color-group {
+        margin-left:2px;
+        margin-right:2px;
+    }
 }
