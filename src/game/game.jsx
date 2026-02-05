@@ -1,49 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { GameLayout } from '../layouts/gameLayout';
 import "./game.css";
 export function Game() {
   return (
-    <div className="body">
-        <header id="game-header">
-            <button className="btn btn-outline-primary my-button info-button" data-bs-toggle="modal" data-bs-target="#info-modal"> Info </button>
-            <div className="timer"> 1:30</div>
-        </header>
-        
-
-        <main id="game">
-            <div id="game-content">
-                <div className="row-align">
-                    <div id="canvas"></div>
-                    <div id="color-bar">
-                        <div className="color-grid">
-                            <div className="color-group" style="background-color: #ffffff"> </div>
-                            <div className="color-group" style="background-color: #6e6e6e"> </div>
-                            <div className="color-group" style="background-color: #000000"> </div>
-                            <div className="color-group" style="background-color: #48bfea"> </div>
-                            <div className="color-group" style="background-color: #eb4949"> </div>
-                            <div className="color-group" style="background-color: #49eb71"> </div>
-                            <div className="color-group" style="background-color: #ebe949"> </div>
-                            <div className="color-group" style="background-color: #4e49eb"> </div>
-                            <div className="color-group" style="background-color: #d149eb"> </div>
-                            <div className="color-group" style="background-color: #ebbb49"> </div>
-                        </div>
-                        <input type="color" name="varColor" id="color-selector"/>
+    <GameLayout>
+    <main id="game">
+        <div id="game-content">
+            <div className="row-align">
+                <div id="canvas"></div>
+                <div id="color-bar">
+                    <div className="color-grid">
+                        <div className="color-group" style={{backgroundColor: '#ffffff'}}> </div>
+                        <div className="color-group" style={{backgroundColor: '#6e6e6e'}}> </div>
+                        <div className="color-group" style={{backgroundColor: '#000000'}}> </div>
+                        <div className="color-group" style={{backgroundColor: '#48bfea'}}> </div>
+                        <div className="color-group" style={{backgroundColor: '#eb4949'}}> </div>
+                        <div className="color-group" style={{backgroundColor: '#49eb71'}}> </div>
+                        <div className="color-group" style={{backgroundColor: '#ebe949'}}> </div>
+                        <div className="color-group" style={{backgroundColor: '#4e49eb'}}> </div>
+                        <div className="color-group" style={{backgroundColor: '#d149eb'}}> </div>
+                        <div className="color-group" style={{backgroundColor: '#ebbb49'}}> </div>
                     </div>
-                </div>
-                <div id="brush-slider">
-                    <label for="brush-size"> Brush Size</label>
-                    <input type="range" name="varBrush" id="brush-range" min="5" max="100" step="1" value="0" />
+                    <input type="color" name="varColor" id="color-selector"/>
                 </div>
             </div>
-            <p> Prompt: <h4 id="prompt"> "Springtime"</h4> </p>
-            <button className="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#finished"> Finished </button>
+            <div id="brush-slider">
+                <label for="brush-size"> Brush Size</label>
+                <input type="range" name="varBrush" id="brush-range" min="5" max="100" step="1" value="0" />
+            </div>
+        </div>
+        <p> Prompt: <h4 id="prompt"> "Springtime"</h4> </p>
+        <button className="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#finished"> Finished </button>
 
-            {/*
-            <button className="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#waiting-for-others"> TestMultiplayer1 </button>
-            <button className="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#rate-others"> TestMultiplayer2 </button>
-            <button className="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#display-masterpiece"> TestMultiplayer3 </button>
-            */}
-        </main>
+        {/*
+        <button className="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#waiting-for-others"> TestMultiplayer1 </button>
+        <button className="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#rate-others"> TestMultiplayer2 </button>
+        <button className="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#display-masterpiece"> TestMultiplayer3 </button>
+        */}
+    
         {/* Modals */}
         <div className="modal fade" id="info-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog">
@@ -162,12 +157,7 @@ export function Game() {
                 </div>
             </div>
         </div>
-
-
-        <footer>
-            <a className="no-decoration" id="githublink" href="https://github.com/adam-clark-git/web-startup"> Adam Clark Github</a>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    </div>
+    </main>
+    </GameLayout>
   );
 }
