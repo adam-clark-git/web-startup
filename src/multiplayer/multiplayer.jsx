@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export function Multiplayer() {
   return (
@@ -26,7 +27,7 @@ export function Multiplayer() {
                         <button className="kick btn btn-outline-primary my-button"> Kick</button>
                     </li>
                 </ul>
-                <Link id="start-multiplayer" to="game" className="btn btn-primary my-button" role="button"> Start the Game</Link>
+                <Link id="start-multiplayer" to="/game" className="btn btn-primary my-button" role="button"> Start the Game</Link>
             </div>
         </main>
   );
