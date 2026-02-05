@@ -97,9 +97,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [x] **Bundled using Vite** - All Bundled with Vite.
+- [x] **Components** - I have 6 components, 5 pages (gallery, game, login, main, and multiplayer) and one defualt layout.
+- [x] **Router** - There is routing to each page, in both the default layout and links in main, game, and multiplayer.
 
 ## 🚀 React part 2: Reactivity deliverable
 
