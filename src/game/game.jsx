@@ -8,6 +8,8 @@ export function Game() {
     const [infoModal, setInfoModal] = useState(false);
     const [finishedModal, setFinishedModal] = useState(false);
     const [waitingModal, setWaitingModal] = useState(false);
+    const [ratingModal, setRatingModal] = useState(false);
+    const [masterpieceModal, setMasterPieceModal] = useState(false);
   return (
     <div className="body">
         <header id="game-header">
@@ -104,50 +106,34 @@ export function Game() {
                     
                 </Modal.Footer>
             </Modal>
-            <div className="modal fade" id="waiting-for-others" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="staticBackdropLabel"> Great Job! </h1>
-                        </div>
-                        <div className="modal-body">
-                            Waiting for other artists to finish...
-                        </div>
+            <Modal show={ratingModal} onHide={() => setRatingModal(false)}>
+                <Modal.Header>
+                    <Modal.Title> Great Job! </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <img alt="Your Art" src="images/ducksample.jpg" width="200px"/>
+                    <div className="prompt"> "Springtime"</div>
+                    <p>
+                        You made a piece of art! Now, rate your other friends art pieces, and the person with the highest score wins!
+                    </p>
+                    <p id="ratings-left">
+                        You have 2 Thumbs up left.
+                    </p>
+                    <div className="prompt"> "Springtime"</div>
+                    <div className="art-selection">
+                        <img alt="Other Art1" src="images/duck2.jpg" width="200px"/>
+                        <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
                     </div>
-                </div>
-            </div>
-            <div className="modal fade" id="rate-others" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="staticBackdropLabel"> Great Job! </h1>
-                        </div>
-                        <div className="modal-body">
-                            <img alt="Your Art" src="images/ducksample.jpg" width="200px"/>
-                            <div className="prompt"> "Springtime"</div>
-                            <p>
-                                You made a piece of art! Now, rate your other friends art pieces, and the person with the highest score wins!
-                            </p>
-                            <p id="ratings-left">
-                                You have 2 Thumbs up left.
-                            </p>
-                            <div className="prompt"> "Springtime"</div>
-                            <div className="art-selection">
-                                <img alt="Other Art1" src="images/duck2.jpg" width="200px"/>
-                                <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
-                            </div>
-                            <div className="art-selection">
-                                <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
-                                <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
-                            </div>
-                        </div>
-                        
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary finish-rating my-button">Finish Rating</button>
-                        </div>
+                    <div className="art-selection">
+                        <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
+                        <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
                     </div>
-                </div>
-            </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button className="btn btn-secondary my-button">Finish Rating</Button>
+                </Modal.Footer>
+            </Modal>
+            
             <div className="modal fade" id="display-masterpiece" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
