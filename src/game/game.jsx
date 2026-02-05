@@ -91,36 +91,19 @@ export function Game() {
                     <Link type="button" to=".." role="button" className="btn btn-secondary my-button">Return to Home</Link>
                 </Modal.Footer>
             </Modal>
-            <div className="modal fade" id="finished" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="staticBackdropLabel">  </h1>
-                        </div>
-                        <div className="modal-body">
-                            <img alt="Your Art" src="images/ducksample.jpg" width="200px"/>
-                            <div className="prompt"> "Springtime"</div>
-                            <p>
-                                You made a piece of art! If you're logged in, it will automatically be saved, and you can even upload it to the web.
-                                While you're here, why don't you give a thumbs up to some other users art!
-                            </p>
-                            <div className="prompt"> "Springtime"</div>
-                            <div className="art-selection">
-                                <img alt="Other Art1" src="images/duck2.jpg" width="200px"/>
-                                <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
-                            </div>
-                            <div className="art-selection">
-                                <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
-                                <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
-                            </div>
-                        </div>
-                        
-                        <div className="modal-footer">
-                            <Link type="button" to="" role="button" className="btn btn-secondary my-button">Return to Home</Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Modal show={waitingModal} onHide={() => setWaitingModal(false)}>
+                <Modal.Header>
+                    <Modal.Title> Great Job! </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <img alt="Your Art" src="images/ducksample.jpg" width="200px"/>
+                    <div className="prompt"> "Springtime"</div>
+                    <p>Waiting for other artists to finish... </p>
+                </Modal.Body>
+                <Modal.Footer>
+                    
+                </Modal.Footer>
+            </Modal>
             <div className="modal fade" id="waiting-for-others" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
