@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Game } from '../game/game';
-import { Multiplayer } from '../multiplayer/multiplayer';
+import { DefaultLayout } from '../layouts/defaultLayout';
 
 export function Main() {
   return (
+    <DefaultLayout>
     <main className="frontpage">
         <button className="btn btn-info my-button" data-bs-toggle="modal" data-bs-target="#info-modal"> How To Play </button>
         <Link id="main-play" className="btn btn-primary my-button" role="button" to='game'> Play Daily Drawdle </Link>
@@ -30,5 +30,6 @@ export function Main() {
             </div>
         </div>
     </main>
+    </DefaultLayout>
   );
 }
