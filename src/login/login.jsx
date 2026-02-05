@@ -1,7 +1,8 @@
 import React from 'react';
-
+import { DefaultLayout } from '../layouts/defaultLayout';
 export function Login() {
   return (
+    <DefaultLayout>
     <main className="login-page">
         <form>
             <p> Log in to store and share your art with others! </p>
@@ -42,5 +43,6 @@ export function Login() {
         </div>
         
     </main>
+    </DefaultLayout>
   );
 }

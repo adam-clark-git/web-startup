@@ -1,7 +1,9 @@
 import React from 'react';
+import { DefaultLayout } from '../layouts/defaultLayout';
 
 export function Gallery() {
   return (
+    <DefaultLayout>
     <main id="gallery">
         <h2> Gallery </h2>
         <ul>
@@ -22,5 +24,6 @@ export function Gallery() {
             Try the drawdle for today to add your first piece to your gallery!
         </div>
     </main>
+    </DefaultLayout>
   );
 }
