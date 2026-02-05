@@ -6,7 +6,7 @@
   font-weight: 400;
   font-style: normal;
 }
-body {
+.body {
     display: flex;
     flex-direction: column;
     width:100%;
