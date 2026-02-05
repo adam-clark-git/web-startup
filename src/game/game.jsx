@@ -43,12 +43,6 @@ export function Game() {
             </div>
             <p> Prompt: <h4 id="prompt"> "Springtime"</h4> </p>
             <Button className="btn btn-primary my-button" id="submit-art" onClick={() => setFinishedModal(true)}> Finished </Button>
-
-            {/*
-            <button className="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#waiting-for-others"> TestMultiplayer1 </button>
-            <button className="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#rate-others"> TestMultiplayer2 </button>
-            <button className="btn btn-primary my-button" id="submit-art" data-bs-toggle="modal" data-bs-target="#display-masterpiece"> TestMultiplayer3 </button>
-            */}
         
             {/* Modals */}
             <Modal show={infoModal} onHide={() => setInfoModal(false)}>
@@ -133,28 +127,22 @@ export function Game() {
                     <Button className="btn btn-secondary my-button">Finish Rating</Button>
                 </Modal.Footer>
             </Modal>
-            
-            <div className="modal fade" id="display-masterpiece" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="staticBackdropLabel"> Great Job! </h1>
-                        </div>
-                        <div className="modal-body">
-                            <div className="art-selection">
-                                <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
-                            </div>
-                            <p>
-                                This was the grand master piece!
-                            </p>
-                        </div>
-                        
-                        <div className="modal-footer">
-                            <Link type="button" to="" role="button" className="btn btn-secondary my-button">Return to Home</Link>
-                        </div>
+            <Modal show={masterpieceModal} onHide={() => setMasterPieceModal(false)}>
+                <Modal.Header>
+                    <Modal.Title> Great Job! </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="art-selection">
+                        <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
                     </div>
-                </div>
-            </div>
+                    <p>
+                        This was the grand master piece!
+                    </p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Link type="button" to=".." role="button" className="btn btn-secondary my-button">Return to Home</Link>
+                </Modal.Footer>
+            </Modal>
         </main>
         <footer>
             <a className="no-decoration" id="githublink" href="https://github.com/adam-clark-git/web-startup"> Adam Clark Github</a>
