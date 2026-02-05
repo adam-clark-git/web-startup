@@ -2,8 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { GameLayout } from '../layouts/gameLayout';
 import "./game.css";
+import "../app.css";
 export function Game() {
     const [infoModal, setInfoModal] = useState(false);
     const [finishedModal, setFinishedModal] = useState(false);
@@ -11,7 +11,7 @@ export function Game() {
   return (
     <div className="body">
         <header id="game-header">
-            <button className="btn btn-outline-primary my-button info-button" data-bs-toggle="modal" data-bs-target="#info-modal"> Info </button>
+            <Button className="btn-outline-primary my-button info-button" onClick={() => setInfoModal(true)}> Info </Button>
             <div className="timer"> 1:30</div>
         </header>
         <main id="game">
@@ -49,28 +49,23 @@ export function Game() {
             */}
         
             {/* Modals */}
-            <div className="modal fade" id="info-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="staticBackdropLabel"> Info </h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            TIMER PAUSED <br></br> <br></br>
-                            Haven't played Drawdle before? Here are the rules. <br></br> <br></br>
-                            You have 90 seconds to draw a picture from scratch, trying to interpret the prompt as best you can.
-                            The tools and time are very limiting, so don't worry about drawing something that doesn't look great.
-                            Try to stretch your creativity, and don't stress out about it! <br></br> <br></br>
-                            <Link to="">Return to Home</Link>
-                        </div>
-                        
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary my-button" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Modal show={infoModal} onHide={() => setInfoModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title> Info </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>
+                    Haven't played Drawdle before? Here are the rules. <br /> <br />
+                    You have 90 seconds to draw a picture from scratch, trying to interpret the prompt as best you can. <br />
+                    The tools and time are very limiting, so don't worry about drawing something that doesn't look great. <br />
+                    Try to stretch your creativity, and don't stress out about it!
+                    <Link to="">Return to Home</Link>
+                    </p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button className="btn btn-secondary" onClick={() => setInfoModal(false)}>Close</Button>
+                </Modal.Footer>
+            </Modal>
             <div className="modal fade" id="finished" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
