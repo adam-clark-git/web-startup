@@ -26,7 +26,7 @@ export function Multiplayer() {
                         <button className="kick btn btn-outline-primary my-button"> Kick</button>
                     </li>
                 </ul>
-                <a id="start-multiplayer" href="daily.html" className="btn btn-primary my-button" role="button"> Start the Game</a>
+                <Link id="start-multiplayer" to="game" className="btn btn-primary my-button" role="button"> Start the Game</Link>
             </div>
         </main>
   );

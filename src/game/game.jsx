@@ -57,7 +57,7 @@ export function Game() {
                         You have 90 seconds to draw a picture from scratch, trying to interpret the prompt as best you can.
                         The tools and time are very limiting, so don't worry about drawing something that doesn't look great.
                         Try to stretch your creativity, and don't stress out about it! <br></br> <br></br>
-                        <a href="index.html">Return to Home</a>
+                        <Link to="">Return to Home</Link>
                     </div>
                     
                     <div className="modal-footer">
@@ -91,7 +91,7 @@ export function Game() {
                     </div>
                     
                     <div className="modal-footer">
-                        <a type="button" href="index.html" role="button" className="btn btn-secondary my-button">Return to Home</a>
+                        <Link type="button" to="" role="button" className="btn btn-secondary my-button">Return to Home</Link>
                     </div>
                 </div>
             </div>
@@ -156,7 +156,7 @@ export function Game() {
                     </div>
                     
                     <div className="modal-footer">
-                        <a type="button" href="index.html" role="button" className="btn btn-secondary my-button">Return to Home</a>
+                        <Link type="button" to="" role="button" className="btn btn-secondary my-button">Return to Home</Link>
                     </div>
                 </div>
             </div>

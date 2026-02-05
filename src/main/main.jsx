@@ -1,11 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Game } from '../game/game';
+import { Multiplayer } from '../multiplayer/multiplayer';
 
 export function Main() {
   return (
     <main className="frontpage">
         <button className="btn btn-info my-button" data-bs-toggle="modal" data-bs-target="#info-modal"> How To Play </button>
-        <a id="main-play" className="btn btn-primary my-button" role="button"href="daily.html"> Play Daily Drawdle </a>
-        <a className="btn btn-secondary my-button" role="button"href="drawfriends.html"> Multiplayer </a>
+        <Link id="main-play" className="btn btn-primary my-button" role="button" to='game'> Play Daily Drawdle </Link>
+        <Link className="btn btn-secondary my-button" role="button" to='multiplayer'> Multiplayer </Link>
+        
         <div className="modal fade" id="info-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
