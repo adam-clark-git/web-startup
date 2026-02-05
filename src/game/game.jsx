@@ -58,7 +58,7 @@ export function Game() {
                     Haven't played Drawdle before? Here are the rules. <br /> <br />
                     You have 90 seconds to draw a picture from scratch, trying to interpret the prompt as best you can. <br />
                     The tools and time are very limiting, so don't worry about drawing something that doesn't look great. <br />
-                    Try to stretch your creativity, and don't stress out about it!
+                    Try to stretch your creativity, and don't stress out about it! <br/>
                     <Link to="">Return to Home</Link>
                     </p>
                 </Modal.Body>
@@ -66,11 +66,36 @@ export function Game() {
                     <Button className="btn btn-secondary" onClick={() => setInfoModal(false)}>Close</Button>
                 </Modal.Footer>
             </Modal>
+            <Modal show={finishedModal} onHide={() => setFinishedModal(false)}>
+                <Modal.Header>
+                    <Modal.Title> Great Job! </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <img alt="Your Art" src="images/ducksample.jpg" width="200px"/>
+                    <div className="prompt"> "Springtime"</div>
+                    <p>
+                        You made a piece of art! If you're logged in, it will automatically be saved, and you can even upload it to the web.
+                        While you're here, why don't you give a thumbs up to some other users art!
+                    </p>
+                    <div className="prompt"> "Springtime"</div>
+                    <div className="art-selection">
+                        <img alt="Other Art1" src="images/duck2.jpg" width="200px"/>
+                        <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
+                    </div>
+                    <div className="art-selection">
+                        <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
+                        <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Link type="button" to=".." role="button" className="btn btn-secondary my-button">Return to Home</Link>
+                </Modal.Footer>
+            </Modal>
             <div className="modal fade" id="finished" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="staticBackdropLabel"> Great Job! </h1>
+                            <h1 className="modal-title fs-5" id="staticBackdropLabel">  </h1>
                         </div>
                         <div className="modal-body">
                             <img alt="Your Art" src="images/ducksample.jpg" width="200px"/>
