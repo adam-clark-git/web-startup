@@ -1,19 +1,41 @@
-export function UnAuthenticated() {
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+
+export function Unauthenticated(props) {
+    const [userName, setUserName] = React.useState(props.userName);
+    const [password, setPassword] = React.useState('');
+    const [displayError, setDisplayError] = React.useState(null);
+
+    async function loginUser() {
+        localStorage.setItem('userName', userName);
+        props.onLogin(userName);
+    }
+
+    async function createUser() {
+        localStorage.setItem('userName', userName);
+        props.onLogin(userName);
+    }
     return (
         <form>
             <p> Log in to store and share your art with others! </p>
             <ul>
                 <li>
-                    <label for="text">Email:</label>
-                    <input type="email" id="email" name="varEmail"/>
+                    <label htmlFor="username">Username:</label>
+                    <input id="username" type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
                 </li>
                 <li>
-                    <label for="text">Password:</label>
-                    <input type="password" id="password" name="varPassword"/>
+                    <label htmlFor="password">Password:</label>
+                    <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </li>
             </ul>
-            <button id="login"  type="button" className="btn btn-outline-primary my-button"> Log In </button>
-            <p> Don't have an account?</p>
+            <Button type="button" variant="outline-primary" onClick={loginUser} className="my-button"> Log In </Button>
+            
+            <Button type="button" variant="outline-primary" onClick={createUser} className="my-button"> Sign Up </Button>
+        </form>
+    )
+}
+/*
+<p> Don't have an account?</p>
             <ul>
                 <li>
                     <label for="text">Username:</label>
@@ -28,7 +50,4 @@ export function UnAuthenticated() {
                     <input type="password" id="password" name="varPassword"/>
                 </li>
             </ul>
-            <button id="sign-up"  type="button" className="btn btn-outline-primary my-button"> Sign Up </button>
-        </form>
-    )
-}
+*/
