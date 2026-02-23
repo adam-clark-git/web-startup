@@ -10,6 +10,7 @@ canvas {
     outline: 5px;
     outline-color: black, rgb(87, 87, 87);
     outline-style:inset;
+    touch-action: none;
 }
 #color-bar {
     background-color: rgb(224, 224, 224);
