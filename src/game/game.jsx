@@ -20,9 +20,11 @@ export function Game() {
     const ctxRef = useRef(null);
     useEffect(() => {
         const canvas = canvasRef.current;
-        canvas.width = canvas.offsetWidth;   // match CSS width
-        canvas.height = canvas.offsetHeight;
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = canvas.offsetWidth * dpr;
+        canvas.height = canvas.offsetHeight * dpr;
         const ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
         // Set a default pixel size for the canvas so drawing coordinates are consistent
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
@@ -96,7 +98,7 @@ export function Game() {
                 </div>
                 <div id="brush-slider">
                     <label for="brush-size"> Brush Size</label>
-                    <input type="range" name="varBrush" min="5" max="20" step="1" value={brushSize} onChange={(e)=>setBrushSize(Number(e.target.value))} />
+                    <input type="range" name="varBrush" min="5" max="50" step="5" value={brushSize} onChange={(e)=>setBrushSize(Number(e.target.value))} />
                 </div>
             </div>
             <p> Prompt: </p><h4 id="prompt"> "Springtime"</h4>
