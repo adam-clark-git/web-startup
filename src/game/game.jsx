@@ -16,6 +16,7 @@ export function Game() {
     const [brushColor, changeColor] = useState("#000000");
     const [brushSize, setBrushSize] = useState(5);
     const [isDrawing, setIsDrawing] = useState(false);
+    const [finalImage, setFinalImage] = useState(null);
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
     useEffect(() => {
@@ -64,6 +65,16 @@ export function Game() {
     {
         changeColor(e.target.value);
     }
+    function handleFinish()
+    {
+        saveImage()
+        setFinishedModal(true)
+    }
+    function saveImage()
+    {
+        const canvas = canvasRef.current;
+        setFinalImage(canvas.toDataURL("image/png"));
+    }
   return (
     <div className="body">
         <header id="game-header">
@@ -102,7 +113,7 @@ export function Game() {
                 </div>
             </div>
             <p> Prompt: </p><h4 id="prompt"> "Springtime"</h4>
-            <Button className="btn btn-primary my-button" id="submit-art" onClick={() => setFinishedModal(true)}> Finished </Button>
+            <Button className="btn btn-primary my-button" id="submit-art" onClick={() => handleFinish()}> Finished </Button>
         
 
 
@@ -134,7 +145,7 @@ export function Game() {
                     <Modal.Title> Great Job! </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <img alt="Your Art" src="images/ducksample.jpg" width="200px"/>
+                    <img alt="Your Art" src={finalImage} width="200px"/>
                     <div className="prompt"> "Springtime"</div>
                     <p>
                         You made a piece of art! If you"re logged in, it will automatically be saved, and you can even upload it to the web.
