@@ -1,8 +1,15 @@
-export function Authenticated() {
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+
+export function Authenticated({ userName, onLogout }) {
+    function logout() {
+        localStorage.removeItem('userName');
+        if (onLogout) onLogout();
+    }
     return (
-        <div id="display-logged-in">
-            <p id="confirmation-login"> Email: sample@gmail.com</p>
-            <button id="log-out"  type="button" className="btn btn-outline-primary"> Log Out</button>
+        <div>
+            <p> Signed in as: {userName || 'sample@gmail.com'}</p>
+            <Button type="button" variant="outline-primary" onClick={logout}> Log Out</Button>
         </div>
     )
 }
