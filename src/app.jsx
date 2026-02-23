@@ -9,31 +9,34 @@ import { Gallery } from './gallery/gallery';
 import { Main } from './main/main';
 import { DefaultLayout } from "./layouts/defaultLayout";
 import { AuthState } from './login/authState';
+import { Auth } from "./login/auth"
 
 export default function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
   return (
-    <BrowserRouter>
-    <Routes>
-        <Route path='/' element={<Main />} exact />
-        <Route path='/login' element={
-          <Login 
-            userName={userName}
-            authState={authState}
-            onAuthChange={(userName, authState) => {
-              setAuthState(authState);
-              setUserName(userName);
-            }}
-          />} 
-        />
-        <Route path='/gallery' element={<Gallery />} />
-        <Route path='/game' element={<Game />} />
-        <Route path='/multiplayer' element={<Multiplayer />} />
-        <Route path='*' element={<NotFound />} />
-    </Routes>
-    </BrowserRouter>
+    <Auth>
+      <BrowserRouter>
+      <Routes>
+          <Route path='/' element={<Main />} exact />
+          <Route path='/login' element={
+            <Login 
+              userName={userName}
+              authState={authState}
+              onAuthChange={(userName, authState) => {
+                setAuthState(authState);
+                setUserName(userName);
+              }}
+            />} 
+          />
+          <Route path='/gallery' element={<Gallery />} />
+          <Route path='/game' element={<Game />} />
+          <Route path='/multiplayer' element={<Multiplayer />} />
+          <Route path='*' element={<NotFound />} />
+      </Routes>
+      </BrowserRouter>
+    </Auth>
   );
 }
 function NotFound() {
