@@ -5,15 +5,15 @@ export function Auth({ children })
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [userName, setUserName] = useState(() => localStorage.getItem("userName"))
 
-    const login = (userName) => {
+    const login = async (userName) => {
         localStorage.setItem("userName", userName);
         setUserName(userName)
     }
-    const create = (userName) => {
+    const create = async (userName) => {
         localStorage.setItem("userName", userName);
         setUserName(userName)
     }
-    const logout = () => {
+    const logout = async () => {
         localStorage.removeItem("userName");
         setUserName(null);
     }
