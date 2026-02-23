@@ -1,9 +1,8 @@
-import { createContext, useState } from 'react'
-const AuthContext = createContext()
-export function Auth({ children })
-{
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [userName, setUserName] = useState(() => localStorage.getItem("userName"))
+import React, { createContext, useState } from 'react';
+export const AuthContext = createContext();
+export function Auth({ children }) {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userName, setUserName] = useState(() => localStorage.getItem("userName"));
 
     const login = async (userName) => {
         localStorage.setItem("userName", userName);
@@ -22,5 +21,5 @@ export function Auth({ children })
         <AuthContext.Provider value={{ isLoggedIn, login, create, userName, logout}}>
             {children}
         </AuthContext.Provider>
-    )
+    );
 }
