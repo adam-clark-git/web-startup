@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Prompt } from "./prompt.jsx"
 import "./game.css";
 import "../app.css";
 export function Game() {
@@ -11,6 +12,7 @@ export function Game() {
     const [waitingModal, setWaitingModal] = useState(false);
     const [ratingModal, setRatingModal] = useState(false);
     const [masterpieceModal, setMasterPieceModal] = useState(false);
+    const [prompt, setPrompt] = useState("")
 
     /* Real Stuff */
     const [brushColor, changeColor] = useState("#000000");
@@ -20,6 +22,7 @@ export function Game() {
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
     useEffect(() => {
+        setPrompt(Prompt())
         const canvas = canvasRef.current;
         const dpr = window.devicePixelRatio || 1;
         canvas.width = canvas.offsetWidth * dpr;
@@ -112,7 +115,7 @@ export function Game() {
                     <input type="range" name="varBrush" min="5" max="50" step="5" value={brushSize} onChange={(e)=>setBrushSize(Number(e.target.value))} />
                 </div>
             </div>
-            <p> Prompt: </p><h4 id="prompt"> "Springtime"</h4>
+            <p> Prompt: </p><h4 id="prompt"> {prompt}</h4>
             <Button className="btn btn-primary my-button" id="submit-art" onClick={() => handleFinish()}> Finished </Button>
         
 
@@ -146,12 +149,12 @@ export function Game() {
                 </Modal.Header>
                 <Modal.Body>
                     <img alt="Your Art" src={finalImage} width="200px"/>
-                    <div className="prompt"> "Springtime"</div>
+                    <div className="prompt"> {prompt}</div>
                     <p>
-                        You made a piece of art! If you"re logged in, it will automatically be saved, and you can even upload it to the web.
-                        While you"re here, why don"t you give a thumbs up to some other users art!
+                        You made a piece of art! If you're logged in, it will automatically be saved, and you can even upload it to the web.
+                        While you're here, why don"t you give a thumbs up to some other users art!
                     </p>
-                    <div className="prompt"> "Springtime"</div>
+                    <div className="prompt"> {prompt}</div>
                     <div className="art-selection">
                         <img alt="Other Art1" src="images/duck2.jpg" width="200px"/>
                         <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
