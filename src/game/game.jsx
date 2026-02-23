@@ -140,7 +140,7 @@ export function Game() {
                     You have 90 seconds to draw a picture from scratch, trying to interpret the prompt as best you can. <br />
                     The tools and time are very limiting, so don"t worry about drawing something that doesn"t look great. <br />
                     Try to stretch your creativity, and don"t stress out about it! <br/>
-                    <Link to="">Return to Home</Link>
+                    <Link to="/">Return to Home</Link>
                     </p>
                 </Modal.Body>
                 <Modal.Footer>
