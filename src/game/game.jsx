@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./game.css";
@@ -13,10 +13,54 @@ export function Game() {
     const [masterpieceModal, setMasterPieceModal] = useState(false);
 
     /* Real Stuff */
-    const [brushColor, changeColor] = useState("#000000")
+    const [brushColor, changeColor] = useState("#000000");
+    const [brushSize, setBrushSize] = useState(5);
+    const [isDrawing, setIsDrawing] = useState(false);
+    const canvasRef = useRef(null);
+    const ctxRef = useRef(null);
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        canvas.width = canvas.offsetWidth;   // match CSS width
+        canvas.height = canvas.offsetHeight;
+        const ctx = canvas.getContext('2d');
+        // Set a default pixel size for the canvas so drawing coordinates are consistent
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctxRef.current = ctx;
+    }, []);
+    const getCanvasPos = (e) => {
+        const rect = canvasRef.current.getBoundingClientRect();
+        return { x: e.clientX-rect.left, y: e.clientY-rect.top};
+    };
+
+    const handlePointerDown = (e) => {
+        e.target.setPointerCapture(e.pointerId);
+        const ctx = ctxRef.current;
+        const pos = getCanvasPos(e);
+        ctx.strokeStyle = brushColor;
+        ctx.lineWidth = brushSize;
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+        setIsDrawing(true);
+    };
+
+    const handlePointerStay = (e) => {
+        if (!isDrawing) return;
+        const ctx = ctxRef.current;
+        const pos = getCanvasPos(e);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+    };
+
+    const handlePointerUp = (e) => {
+        setIsDrawing(false);
+        try { e.target.releasePointerCapture(e.pointerId); } catch {}
+        const ctx = ctxRef.current;
+        if (ctx) ctx.closePath();
+    };
     function onColorChange(e)
     {
-        changeColor(e.target.value)
+        changeColor(e.target.value);
     }
   return (
     <div className="body">
@@ -28,7 +72,12 @@ export function Game() {
         <main id="game">
             <div id="game-content">
                 <div className="row-align">
-                    <canvas></canvas>
+                    <canvas
+                        ref={canvasRef}
+                        onPointerDown={handlePointerDown}
+                        onPointerMove={handlePointerStay}
+                        onPointerUp={handlePointerUp}
+                    />
                     <div id="color-bar">
                         <div className="color-grid">
                             <Button className="color-group" onClick={() => changeColor("#ffffff")} style={{backgroundColor: "#ffffff"}}> </Button>
@@ -47,7 +96,7 @@ export function Game() {
                 </div>
                 <div id="brush-slider">
                     <label for="brush-size"> Brush Size</label>
-                    <input type="range" name="varBrush" id="brush-range" min="5" max="100" step="1" value="0" />
+                    <input type="range" name="varBrush" min="5" max="20" step="1" value={brushSize} onChange={(e)=>setBrushSize(Number(e.target.value))} />
                 </div>
             </div>
             <p> Prompt: </p><h4 id="prompt"> "Springtime"</h4>
