@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Prompt } from "./prompt.jsx"
+import { Prompt } from "./prompt.jsx";
+import { Timer } from "./timer.jsx"
 import "./game.css";
 import "../app.css";
 export function Game() {
@@ -78,11 +79,14 @@ export function Game() {
         const canvas = canvasRef.current;
         setFinalImage(canvas.toDataURL("image/png"));
     }
+    const handleTimerEnd = () => {
+        handleFinish()
+    }
   return (
     <div className="body">
         <header id="game-header">
             <Button className="btn-outline-primary my-button info-button" onClick={() => setInfoModal(true)}> Info </Button>
-            <div className="timer"> 1:30</div>
+            <Timer startFrom = {130} onComplete={handleTimerEnd}/>
         </header>
 
         <main id="game">
