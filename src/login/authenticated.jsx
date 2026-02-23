@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
+import { AuthContext } from './auth';
 
-export function Authenticated({ userName, onLogout }) {
-    function logout() {
-        localStorage.removeItem('userName');
-        if (onLogout) onLogout();
-    }
+export function Authenticated({}) {
+    const {userName, logout } = useContext(AuthContext);
     return (
         <div>
             <p> Signed in as: {userName || 'sample@gmail.com'}</p>
