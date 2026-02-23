@@ -35,15 +35,6 @@ footer {
     background-color: #d0e8ff;
     text-align: right;
 }
-#display-logged-in {
-    display:none
-}
-.modal-sign-up {
-    display:none
-}
-.info {
-    display: none
-}
 .log-in-container {
     width: 400px;
     flex-shrink: 0;
@@ -86,9 +77,6 @@ ul {
     list-style-type: none;
     padding-left: 0 !important;
     margin-left: 0
-}
-.back-up-login {
-    display: none !important;
 }
 
 @media (hover: hover) and (pointer: fine) {
