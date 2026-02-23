@@ -1,19 +1,16 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 
-export function Unauthenticated(props) {
-    const [userName, setUserName] = React.useState(props.userName);
+export function Unauthenticated() {
+    const {userName, login, create} = useContext(AuthContext);
+    const [tempUserName, setTempUserName] = React.useState(userName);
     const [password, setPassword] = React.useState('');
     const [displayError, setDisplayError] = React.useState(null);
-
-    async function loginUser() {
-        localStorage.setItem('userName', userName);
-        props.onLogin(userName);
+    const handleLogin = async() => {
+        await login(tempUserName);
     }
-
-    async function createUser() {
-        localStorage.setItem('userName', userName);
-        props.onLogin(userName);
+    const handleCreate = async() => {
+        await create(tempUserName);
     }
     return (
         <form>
@@ -21,16 +18,16 @@ export function Unauthenticated(props) {
             <ul>
                 <li>
                     <label htmlFor="username">Username:</label>
-                    <input id="username" type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
+                    <input id="username" type="text" value={userName} onChange={(e) => setTempUserName(e.target.value)} />
                 </li>
                 <li>
                     <label htmlFor="password">Password:</label>
                     <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </li>
             </ul>
-            <Button type="button" variant="outline-primary" onClick={loginUser} className="my-button"> Log In </Button>
+            <Button type="button" variant="outline-primary" onClick={handleLogin} className="my-button"> Log In </Button>
             
-            <Button type="button" variant="outline-primary" onClick={createUser} className="my-button"> Sign Up </Button>
+            <Button type="button" variant="outline-primary" onClick={handleCreate} className="my-button"> Sign Up </Button>
         </form>
     )
 }
