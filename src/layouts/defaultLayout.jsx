@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {NavLink} from 'react-router-dom';
+import { Authenticated } from '../login/authenticated';
+import { AuthState } from '../login/authState';
+import { AuthContext } from '../login/auth';
 
 export function DefaultLayout ({ children }) {
+    const {isLoggedIn, userName} = useContext(AuthContext);
     return (
         <div className="body">
             <header>
@@ -15,16 +19,16 @@ export function DefaultLayout ({ children }) {
                     <hr></hr>
                     <NavLink to='/gallery' className="playwrite-nz-basic-reg nav-item no-decoration">Gallery</NavLink>
                 </nav>
-                <div className="log-in-container">
+                {isLoggedIn === AuthState.Unknown && <h1>Login Loading...</h1>}
+                {isLoggedIn === AuthState.Unauthenticated && (
                     <form>
                         <p className="hide-vertical"> Create an account to store and share your art with others! </p>
                         <NavLink className="btn btn-outline-primary my-button" role="button" to='/login'> Log In </NavLink>
-                    </form>           
-                    <div id="display-logged-in">
-                        <p id="confirmation-login"> Email: sample@gmail.com</p>
-                        <button id="log-out"  type="button" className="btn btn-outline-primary my-button"> Log Out</button>
-                    </div>
-                </div>
+                    </form>
+                )}
+                {isLoggedIn === AuthState.Authenticated && (
+                    <Authenticated/>
+                )}
                 
             </header>
             {children}
