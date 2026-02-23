@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
+import { AuthContext } from './auth';
 
 export function Unauthenticated() {
     const {userName, login, create} = useContext(AuthContext);

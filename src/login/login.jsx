@@ -3,6 +3,7 @@ import { DefaultLayout } from '../layouts/defaultLayout';
 import { Unauthenticated } from './unauthenticated';
 import { AuthState } from './authState';
 import { Authenticated } from './authenticated';
+import { AuthContext } from './auth';
 export function Login() {
     const {isLoggedIn} = useContext(AuthContext);
     return (
