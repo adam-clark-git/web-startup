@@ -53,7 +53,9 @@ nav {
     font-size: 2em;
     transition: font-size 0.3s ease;
 }
-
+.back-up-login {
+    display: none;
+}
 .no-decoration {
     text-decoration: none;
     color: black;
