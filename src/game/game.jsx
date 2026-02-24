@@ -81,6 +81,7 @@ export function Game() {
         if (isLoggedIn === AuthState.Authenticated)
         {
             saveToServer();
+            saveToLocal();
         }
     }
     function saveImage()
@@ -88,6 +89,14 @@ export function Game() {
         const canvas = canvasRef.current;
         setFinalImage(canvas.toDataURL("image/png"));
         
+    }
+    function saveToLocal()
+    {
+        const image = canvasRef.current.toDataURL("image/png");
+        const existing = localStorage.getItem(key);
+        const now = new Date();
+        existing.push({ date:now.toLocaleDateString(), artLink:image, prompt:prompt})
+        localStorage.setItem("localSaved",JSON.stringify(data));
     }
     async function saveToServer()
     {
@@ -97,6 +106,7 @@ export function Game() {
         existing.push({ date:now.toLocaleDateString(), artLink:image, prompt:prompt})
         await saveData("gallery",existing)
     }
+
     const handleTimerEnd = () => {
         handleFinish()
     }
