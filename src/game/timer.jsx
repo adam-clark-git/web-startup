@@ -1,8 +1,9 @@
 import React from "react"
 import { useState, useEffect } from "react";
-export function Timer({startFrom = 130, onComplete}) {
+export function Timer({startFrom = 130, onComplete, saveTime, paused}) {
     const [timeLeft, setTimeLeft] = useState(startFrom);
     useEffect(() => {
+        if (paused) return;
         if (timeLeft === 0) {
             onComplete?.()
             return;
@@ -11,7 +12,7 @@ export function Timer({startFrom = 130, onComplete}) {
             setTimeLeft(prev => prev - 1);
         }, 1000);
         return () => clearInterval(timer)
-    }, [timeLeft])
+    }, [timeLeft, paused])
     return (
         <div className="timer"> {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, "0")}</div>
     );
