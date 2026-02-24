@@ -12,9 +12,7 @@
     - timer is purely in seconds, not minutes & seconds or just a visual aid.
     - Brush size is not aligned with the slider
 * To add to login:
-    - needs to ask for email (might just ignore cause I'm lazy)
-    - Honestly might just move it to the right corner? Wait no wouldn't work because of the mobile design.
-    - Could make it so the login page only shows on mobile, otherwise just the login screen in top right (cooking??)
+    - Done
 * To add to gallery:
     - need to create a json format with 3 values per object: 1 date 2 link to img 3 prompt
     - then need to load that object and display it
