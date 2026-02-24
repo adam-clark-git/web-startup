@@ -1,7 +1,10 @@
 import React from "react"
 import { useState, useEffect } from "react";
-export function Timer({startFrom = 130, onComplete, saveTime, paused}) {
+export function Timer({startFrom, onComplete, saveTime, paused}) {
     const [timeLeft, setTimeLeft] = useState(startFrom);
+    useEffect(() => {
+        saveTime?.(timeLeft);
+    }, [timeLeft]);
     useEffect(() => {
         if (paused) return;
         if (timeLeft === 0) {
@@ -10,6 +13,7 @@ export function Timer({startFrom = 130, onComplete, saveTime, paused}) {
         } 
         const timer = setInterval(() => {
             setTimeLeft(prev => prev - 1);
+            
         }, 1000);
         return () => clearInterval(timer)
     }, [timeLeft, paused])

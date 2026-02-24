@@ -7,6 +7,7 @@ import { Timer } from "./timer.jsx"
 import { saveData, loadData } from "../gallery/dataService";
 import { AuthState } from '../login/authState';
 import { AuthContext } from '../login/auth';
+import { Unauthenticated } from '../login/unauthenticated';
 import "./game.css";
 import "../app.css";
 export function Game() {
@@ -23,13 +24,19 @@ export function Game() {
     const [brushSize, setBrushSize] = useState(5);
     const [isDrawing, setIsDrawing] = useState(false);
     const [finalImage, setFinalImage] = useState(null);
-    const [timeLeft, setTimeLeft] = useState(null);
+    const [savedTime, saveTime] = useState(120);
+    const [isFinished, setFinished] = useState(false)
     const [paused, setPaused] = useState(false);
     const {isLoggedIn} = useContext(AuthContext);
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
+    const [startTime, setStartTime] = useState(() => {
+        const saved = JSON.parse(localStorage.getItem("localSaved"));
+        const today = new Date().toLocaleDateString();
+        if (saved && saved.date === today) return saved.timeLeft;
+        return 120;
+    });
     useEffect(() => {
-        setPrompt(Prompt())
         const canvas = canvasRef.current;
         const dpr = window.devicePixelRatio || 1;
         canvas.width = canvas.offsetWidth * dpr;
@@ -40,7 +47,28 @@ export function Game() {
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctxRef.current = ctx;
+        const restored = loadLocal(canvas, ctx);
+        if (!restored) {
+            setPrompt(Prompt());
+        }
     }, []);
+
+    // Only save to server if user becomes authenticated after finishing
+    useEffect(() => {
+        if (isLoggedIn === AuthState.Authenticated && finishedModal && finalImage) {
+            saveToServer();
+        }
+    }, [isLoggedIn]);
+
+    useEffect(() => {
+        if (isFinished) return;
+        const interval = setInterval(() => {
+            saveToLocal(false);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [isFinished]);
+
     const getCanvasPos = (e) => {
         const rect = canvasRef.current.getBoundingClientRect();
         return { x: e.clientX-rect.left, y: e.clientY-rect.top};
@@ -77,33 +105,48 @@ export function Game() {
     }
     function handleFinish()
     {
-        saveImage()
-        setFinishedModal(true)
-        if (isLoggedIn === AuthState.Authenticated)
-        {
+        saveImage();
+        setFinished(true);
+        setFinishedModal(true);
+        saveToLocal(true);
+        if (isLoggedIn === AuthState.Authenticated) {
             saveToServer();
-            saveToLocal();
         }
     }
     function saveImage()
     {
         const canvas = canvasRef.current;
         setFinalImage(canvas.toDataURL("image/png"));
-        
     }
     function handleInfoModal()
     {
         setInfoModal(!infoModal);
         setPaused(!paused)
     }
-    function loadLocal() {
-        return;
+    function loadLocal(canvas, ctx) {
+        const pastGameRaw = localStorage.getItem("localSaved");
+        const currentDate = new Date();
+        if (!pastGameRaw) return false;
+        const pastGame = JSON.parse(pastGameRaw)
+        if (pastGame.date !== currentDate.toLocaleDateString()) return false;
+        if (pastGame.finished)
+        {
+            handleFinish();
+        }
+        // Should upload previous canvas here;
+        const img = new Image();
+        img.onload = () => {
+            ctx.drawImage(img, 0, 0, canvas.offsetWidth, canvas.offsetHeight); // use passed ctx and canvas
+        };
+        img.src = pastGame.artLink;
+        setPrompt(pastGame.prompt);
+        return true;
     }
-    function saveToLocal()
+    function saveToLocal(status)
     {
         const image = canvasRef.current.toDataURL("image/png");
         const now = new Date();
-        localStorage.setItem("localSaved",JSON.stringify(({ date:now.toLocaleDateString(), artLink:image, prompt:prompt, timeLeft:timeLeft})));
+        localStorage.setItem("localSaved",JSON.stringify(({date:now.toLocaleDateString(), artLink:image, prompt:prompt, timeLeft:savedTime, finished:status})));
     }
     async function saveToServer()
     {
@@ -121,7 +164,7 @@ export function Game() {
     <div className="body">
         <header id="game-header">
             <Button className="btn-outline-primary my-button info-button" onClick={() => handleInfoModal()}> Info </Button>
-            <Timer startFrom = {130} onComplete={handleTimerEnd} saveTime={setTimeLeft} paused={paused}/>
+            <Timer startFrom = {startTime} onComplete={handleTimerEnd} saveTime={saveTime} paused={paused}/>
         </header>
 
         <main id="game">
@@ -202,6 +245,9 @@ export function Game() {
                         <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
                         <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
                     </div>
+                    {isLoggedIn === AuthState.Unauthenticated && (
+                        <Unauthenticated/>
+                    )}
                 </Modal.Body>
                 <Modal.Footer>
                     <Link type="button" to=".." role="button" className="btn btn-secondary my-button">Return to Home</Link>
