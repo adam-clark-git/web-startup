@@ -77,11 +77,11 @@ export function Game() {
     function handleFinish()
     {
         saveImage()
+        setFinishedModal(true)
         if (isLoggedIn === AuthState.Authenticated)
         {
             saveToServer();
         }
-        setFinishedModal(true)
     }
     function saveImage()
     {
@@ -91,9 +91,10 @@ export function Game() {
     }
     async function saveToServer()
     {
-        await setGalleryItems(loadData("gallery"));
+        const image = canvasRef.current.toDataURL("image/png");
+        const existing = await loadData("gallery");
         const now = new Date();
-        galleryItems.push({ date:now.toLocaleDateString(), imageLink:finalImage, prompt:prompt})
+        galleryItems.push({ date:now.toLocaleDateString(), artLink:image, prompt:prompt})
         await saveData("gallery",galleryItems)
     }
     const handleTimerEnd = () => {
@@ -132,7 +133,7 @@ export function Game() {
                     </div>
                 </div>
                 <div id="brush-slider">
-                    <label for="brush-size"> Brush Size</label>
+                    <label> Brush Size</label>
                     <input type="range" name="varBrush" min="5" max="50" step="5" value={brushSize} onChange={(e)=>setBrushSize(Number(e.target.value))} />
                 </div>
             </div>
