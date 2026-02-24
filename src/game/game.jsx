@@ -23,7 +23,7 @@ export function Game() {
     const [brushSize, setBrushSize] = useState(5);
     const [isDrawing, setIsDrawing] = useState(false);
     const [finalImage, setFinalImage] = useState(null);
-    const [galleryItems, setGalleryItems] = useState([]);
+    //const [galleryItems, setGalleryItems] = useState([]);
     const {isLoggedIn} = useContext(AuthContext);
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
@@ -94,8 +94,8 @@ export function Game() {
         const image = canvasRef.current.toDataURL("image/png");
         const existing = await loadData("gallery");
         const now = new Date();
-        galleryItems.push({ date:now.toLocaleDateString(), artLink:image, prompt:prompt})
-        await saveData("gallery",galleryItems)
+        existing.push({ date:now.toLocaleDateString(), artLink:image, prompt:prompt})
+        await saveData("gallery",existing)
     }
     const handleTimerEnd = () => {
         handleFinish()
