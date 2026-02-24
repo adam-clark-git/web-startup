@@ -23,7 +23,8 @@ export function Game() {
     const [brushSize, setBrushSize] = useState(5);
     const [isDrawing, setIsDrawing] = useState(false);
     const [finalImage, setFinalImage] = useState(null);
-    //const [galleryItems, setGalleryItems] = useState([]);
+    const [timeLeft, setTimeLeft] = useState(null);
+    const [paused, setPaused] = useState(false);
     const {isLoggedIn} = useContext(AuthContext);
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
@@ -90,13 +91,19 @@ export function Game() {
         setFinalImage(canvas.toDataURL("image/png"));
         
     }
+    function handleInfoModal()
+    {
+        setInfoModal(!infoModal);
+        setPaused(!paused)
+    }
+    function loadLocal() {
+        return;
+    }
     function saveToLocal()
     {
         const image = canvasRef.current.toDataURL("image/png");
-        const existing = localStorage.getItem(key);
         const now = new Date();
-        existing.push({ date:now.toLocaleDateString(), artLink:image, prompt:prompt})
-        localStorage.setItem("localSaved",JSON.stringify(data));
+        localStorage.setItem("localSaved",JSON.stringify(({ date:now.toLocaleDateString(), artLink:image, prompt:prompt, timeLeft:timeLeft})));
     }
     async function saveToServer()
     {
@@ -113,8 +120,8 @@ export function Game() {
   return (
     <div className="body">
         <header id="game-header">
-            <Button className="btn-outline-primary my-button info-button" onClick={() => setInfoModal(true)}> Info </Button>
-            <Timer startFrom = {130} onComplete={handleTimerEnd}/>
+            <Button className="btn-outline-primary my-button info-button" onClick={() => handleInfoModal()}> Info </Button>
+            <Timer startFrom = {130} onComplete={handleTimerEnd} saveTime={setTimeLeft} paused={paused}/>
         </header>
 
         <main id="game">
@@ -158,7 +165,7 @@ export function Game() {
 
 
             {/* Modals */}
-            <Modal show={infoModal} onHide={() => setInfoModal(false)}>
+            <Modal show={infoModal} onHide={() => handleInfoModal()}>
                 <Modal.Header closeButton>
                     <Modal.Title> Info </Modal.Title>
                 </Modal.Header>
@@ -172,7 +179,7 @@ export function Game() {
                     </p>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button className="btn btn-secondary" onClick={() => setInfoModal(false)}>Close</Button>
+                    <Button className="btn btn-secondary" onClick={() => handleInfoModal()}>Close</Button>
                 </Modal.Footer>
             </Modal>
             <Modal show={finishedModal} onHide={() => setFinishedModal(false)}>
