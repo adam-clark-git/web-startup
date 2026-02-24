@@ -9,8 +9,9 @@
     - No fill bucket, no clear tool, kinda annoying right now.
     - Background is not perfectly white
     - Brush size is not aligned with the slider
+    - Game needs to load other user images
 * To add to login:
-    - Done
+    - Login needs to store login status on page reload
 * To add to gallery:
     - Done
 * Multiplayer:
