@@ -1,9 +1,12 @@
 import React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Prompt } from "./prompt.jsx";
 import { Timer } from "./timer.jsx"
+import { saveData, loadData } from "../gallery/dataService";
+import { AuthState } from '../login/authState';
+import { AuthContext } from '../login/auth';
 import "./game.css";
 import "../app.css";
 export function Game() {
@@ -20,6 +23,8 @@ export function Game() {
     const [brushSize, setBrushSize] = useState(5);
     const [isDrawing, setIsDrawing] = useState(false);
     const [finalImage, setFinalImage] = useState(null);
+    const [galleryItems, setGalleryItems] = useState([]);
+    const {isLoggedIn} = useContext(AuthContext);
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
     useEffect(() => {
@@ -72,12 +77,24 @@ export function Game() {
     function handleFinish()
     {
         saveImage()
+        if (isLoggedIn === AuthState.Authenticated)
+        {
+            saveToServer();
+        }
         setFinishedModal(true)
     }
     function saveImage()
     {
         const canvas = canvasRef.current;
         setFinalImage(canvas.toDataURL("image/png"));
+        
+    }
+    async function saveToServer()
+    {
+        await setGalleryItems(loadData("gallery"));
+        const now = new Date();
+        galleryItems.push({ date:now.toLocaleDateString(), imageLink:finalImage, prompt:prompt})
+        await saveData("gallery",galleryItems)
     }
     const handleTimerEnd = () => {
         handleFinish()
