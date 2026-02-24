@@ -13,6 +13,6 @@ export function Timer({startFrom = 130, onComplete}) {
         return () => clearInterval(timer)
     }, [timeLeft])
     return (
-        <div className="timer"> {timeLeft}</div>
+        <div className="timer"> {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, "0")}</div>
     );
 }
