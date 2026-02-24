@@ -1,10 +1,11 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState }from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { DefaultLayout } from '../layouts/defaultLayout';
 
+
 export function Main() {
+    const [lastPlayed] = useState(localStorage.getItem("lastPlayed")) || [];
     const [showModal, setShowModal] = useState(false);
   return (
     <DefaultLayout>
