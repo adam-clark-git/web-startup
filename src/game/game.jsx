@@ -17,25 +17,18 @@ export function Game() {
     const [waitingModal, setWaitingModal] = useState(false);
     const [ratingModal, setRatingModal] = useState(false);
     const [masterpieceModal, setMasterPieceModal] = useState(false);
-    const [prompt, setPrompt] = useState("")
+    const [prompt, setPrompt] = useState("");
 
     /* Real Stuff */
     const [brushColor, changeColor] = useState("#000000");
     const [brushSize, setBrushSize] = useState(5);
     const [isDrawing, setIsDrawing] = useState(false);
     const [finalImage, setFinalImage] = useState(null);
-    const [savedTime, saveTime] = useState(120);
     const [isFinished, setFinished] = useState(false)
     const [paused, setPaused] = useState(false);
     const {isLoggedIn} = useContext(AuthContext);
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
-    const [startTime, setStartTime] = useState(() => {
-        const saved = JSON.parse(localStorage.getItem("localSaved"));
-        const today = new Date().toLocaleDateString();
-        if (saved && saved.date === today) return saved.timeLeft;
-        return 120;
-    });
     useEffect(() => {
         const canvas = canvasRef.current;
         const dpr = window.devicePixelRatio || 1;
@@ -48,9 +41,8 @@ export function Game() {
         ctx.lineJoin = 'round';
         ctxRef.current = ctx;
         const restored = loadLocal(canvas, ctx);
-        if (!restored) {
-            setPrompt(Prompt());
-        }
+        // Will get a new prompt on each reload, will be not an issue on final release.
+        setPrompt(Prompt());
     }, []);
 
     // Only save to server if user becomes authenticated after finishing
@@ -139,14 +131,13 @@ export function Game() {
             ctx.drawImage(img, 0, 0, canvas.offsetWidth, canvas.offsetHeight); // use passed ctx and canvas
         };
         img.src = pastGame.artLink;
-        setPrompt(pastGame.prompt);
         return true;
     }
     function saveToLocal(status)
     {
         const image = canvasRef.current.toDataURL("image/png");
         const now = new Date();
-        localStorage.setItem("localSaved",JSON.stringify(({date:now.toLocaleDateString(), artLink:image, prompt:prompt, timeLeft:savedTime, finished:status})));
+        localStorage.setItem("localSaved",JSON.stringify(({date:now.toLocaleDateString(), artLink:image, finished:status})));
     }
     async function saveToServer()
     {
@@ -164,7 +155,10 @@ export function Game() {
     <div className="body">
         <header id="game-header">
             <Button className="btn-outline-primary my-button info-button" onClick={() => handleInfoModal()}> Info </Button>
-            <Timer startFrom = {startTime} onComplete={handleTimerEnd} saveTime={saveTime} paused={paused}/>
+            {/* Timer will reset itself back to 90 on reload. I tried passing in the time before, but it was weirdly complicated.
+            Will probably implement later, but for now, infinite timer if you want i guess?
+            */}
+            <Timer startFrom = {90} onComplete={handleTimerEnd} paused={paused}/>
         </header>
 
         <main id="game">

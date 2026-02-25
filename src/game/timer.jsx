@@ -1,10 +1,7 @@
 import React from "react"
 import { useState, useEffect } from "react";
-export function Timer({startFrom, onComplete, saveTime, paused}) {
+export function Timer({startFrom, onComplete, paused}) {
     const [timeLeft, setTimeLeft] = useState(startFrom);
-    useEffect(() => {
-        saveTime?.(timeLeft);
-    }, [timeLeft]);
     useEffect(() => {
         if (paused) return;
         if (timeLeft === 0) {
