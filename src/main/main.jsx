@@ -39,7 +39,7 @@ export function Main() {
     <main className="frontpage">
         <Button className="btn btn-info my-button" onClick={() => setShowModal(true)}> How To Play </Button>
         <DisplayDrawdle/>
-        <Link className="btn btn-secondary my-button" role="button" to='multiplayer'> Multiplayer </Link>
+        {/*<Link className="btn btn-secondary my-button" role="button" to='multiplayer'> Multiplayer </Link>*/}
         
         <Modal show={showModal} onHide={() => setShowModal(false)}>
             <Modal.Header closeButton>
