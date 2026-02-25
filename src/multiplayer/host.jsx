@@ -17,7 +17,7 @@ export function Host()
                     <button className="kick btn btn-outline-primary my-button"> Kick</button>
                 </li>
             </ul>
-            <Link id="start-multiplayer" to="/game" className="btn btn-primary my-button" role="button"> Start the Game</Link>
+            <Link to="/multiplayerGame" className="btn btn-primary my-button" role="button"> Start the Game</Link>
         </div>
     );
 }
