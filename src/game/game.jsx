@@ -24,7 +24,7 @@ export function Game() {
     const [brushSize, setBrushSize] = useState(5);
     const [isDrawing, setIsDrawing] = useState(false);
     const [finalImage, setFinalImage] = useState(null);
-    const [isFinished, setFinished] = useState(false)
+    const [isFinished, setFinished] = useState(false);
     const [paused, setPaused] = useState(false);
     const {isLoggedIn} = useContext(AuthContext);
     const canvasRef = useRef(null);
@@ -40,7 +40,7 @@ export function Game() {
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctxRef.current = ctx;
-        const restored = loadLocal(canvas, ctx);
+        loadLocal(canvas, ctx);
         // Will get a new prompt on each reload, will be not an issue on final release.
         setPrompt(Prompt());
     }, []);
@@ -121,16 +121,19 @@ export function Game() {
         if (!pastGameRaw) return false;
         const pastGame = JSON.parse(pastGameRaw)
         if (pastGame.date !== currentDate.toLocaleDateString()) return false;
-        if (pastGame.finished)
-        {
-            handleFinish();
-        }
         // Should upload previous canvas here;
         const img = new Image();
         img.onload = () => {
             ctx.drawImage(img, 0, 0, canvas.offsetWidth, canvas.offsetHeight); // use passed ctx and canvas
         };
         img.src = pastGame.artLink;
+        if (pastGame.finished)
+        {
+            setFinished(true);
+            setFinalImage(pastGame.artLink);
+            setFinishedModal(true);
+            return true;
+        }
         return true;
     }
     function saveToLocal(status)
@@ -141,7 +144,15 @@ export function Game() {
     }
     async function saveToServer()
     {
-        const image = canvasRef.current.toDataURL("image/png");
+        let image;
+        if (finalImage !== null)
+        {
+            image = canvasRef.current.toDataURL("image/png");
+        }
+        else
+        {
+            image = finalImage;
+        }
         const existing = await loadData("gallery");
         const now = new Date();
         existing.push({ date:now.toLocaleDateString(), artLink:image, prompt:prompt})
@@ -149,7 +160,7 @@ export function Game() {
     }
 
     const handleTimerEnd = () => {
-        handleFinish()
+        handleFinish();
     }
   return (
     <div className="body">
