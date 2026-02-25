@@ -4,7 +4,7 @@ import { AuthContext } from './auth';
 
 export function Unauthenticated() {
     const {userName, login, create} = useContext(AuthContext);
-    const [tempUserName, setTempUserName] = React.useState(userName);
+    const [tempUserName, setTempUserName] = React.useState(null);
     const [password, setPassword] = React.useState('');
     const [displayError, setDisplayError] = React.useState(null);
     const handleLogin = async() => {
@@ -19,7 +19,7 @@ export function Unauthenticated() {
             <ul>
                 <li>
                     <label htmlFor="username">Username:</label>
-                    <input id="username" type="text" value={userName} onChange={(e) => setTempUserName(e.target.value)} />
+                    <input id="username" type="text" value={tempUserName} onChange={(e) => setTempUserName(e.target.value)} />
                 </li>
                 <li>
                     <label htmlFor="password">Password:</label>

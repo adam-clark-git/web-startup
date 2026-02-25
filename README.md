@@ -105,7 +105,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - Implemented login, storing login details via localStorage, playing games, saving games to galllery currently implemented via local storage, implemented saving and loading image details while in the middle of the game, Game now runs as intended with accurate canvas scaling.
+- [X] **All functionality implemented or mocked out** - Implemented login, storing login details via localStorage, playing games, saving games to galllery currently implemented via local storage, implemented saving and loading image details while in the middle of the game, Game now runs as intended with accurate canvas scaling.
 - [x] **Hooks** - I used a frankly ridiculous amount of React hooks, especially inside of game
 
 ## 🚀 Service deliverable
