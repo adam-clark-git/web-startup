@@ -14,9 +14,6 @@ export function Game() {
     /* Modals (boring) */
     const [infoModal, setInfoModal] = useState(false);
     const [finishedModal, setFinishedModal] = useState(false);
-    const [waitingModal, setWaitingModal] = useState(false);
-    const [ratingModal, setRatingModal] = useState(false);
-    const [masterpieceModal, setMasterPieceModal] = useState(false);
     const [prompt, setPrompt] = useState("");
 
     /* Real Stuff */
@@ -253,62 +250,6 @@ export function Game() {
                     {isLoggedIn === AuthState.Unauthenticated && (
                         <Unauthenticated/>
                     )}
-                </Modal.Body>
-                <Modal.Footer>
-                    <Link type="button" to=".." role="button" className="btn btn-secondary my-button">Return to Home</Link>
-                </Modal.Footer>
-            </Modal>
-            <Modal show={waitingModal} onHide={() => setWaitingModal(false)}>
-                <Modal.Header>
-                    <Modal.Title> Great Job! </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <img alt="Your Art" src="images/ducksample.jpg" width="200px"/>
-                    <div className="prompt"> "Springtime"</div>
-                    <p>Waiting for other artists to finish... </p>
-                </Modal.Body>
-                <Modal.Footer>
-                    
-                </Modal.Footer>
-            </Modal>
-            <Modal show={ratingModal} onHide={() => setRatingModal(false)}>
-                <Modal.Header>
-                    <Modal.Title> Great Job! </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <img alt="Your Art" src="images/ducksample.jpg" width="200px"/>
-                    <div className="prompt"> "Springtime"</div>
-                    <p>
-                        You made a piece of art! Now, rate your other friends art pieces, and the person with the highest score wins!
-                    </p>
-                    <p id="ratings-left">
-                        You have 2 Thumbs up left.
-                    </p>
-                    <div className="prompt"> "Springtime"</div>
-                    <div className="art-selection">
-                        <img alt="Other Art1" src="images/duck2.jpg" width="200px"/>
-                        <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
-                    </div>
-                    <div className="art-selection">
-                        <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
-                        <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
-                    </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button className="btn btn-secondary my-button">Finish Rating</Button>
-                </Modal.Footer>
-            </Modal>
-            <Modal show={masterpieceModal} onHide={() => setMasterPieceModal(false)}>
-                <Modal.Header>
-                    <Modal.Title> Great Job! </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <div className="art-selection">
-                        <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
-                    </div>
-                    <p>
-                        This was the grand master piece!
-                    </p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Link type="button" to=".." role="button" className="btn btn-secondary my-button">Return to Home</Link>
