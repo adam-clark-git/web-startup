@@ -1,4 +1,5 @@
-export function Join()
+import React, { useContext, useState } from 'react';
+export function Join(gameID)
 {
     return (
         <div>

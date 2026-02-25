@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { DefaultLayout } from '../layouts/defaultLayout';
 import Button from 'react-bootstrap/Button';
@@ -9,6 +9,19 @@ import { Join } from "./join.jsx";
 
 export function Multiplayer() {
     const {isLoggedIn} = useContext(AuthContext);
+    const [inputGameID, changeGameID] = useState("");
+    const [view, setView] = useState(null);
+    function handleJoin() {
+        if (inputGameID === null) {
+            console.log("Please input a code");
+        }
+        else {
+            setView("join");
+        }
+    }
+    function handleCreateLobby() {
+        setView("host");
+    }
     return (
         <DefaultLayout>
         <main id="drawfriends">
@@ -19,20 +32,23 @@ export function Multiplayer() {
                 </div>
             )}
             {isLoggedIn === AuthState.Authenticated && (
+                <>
+                {view === null && (
                 <div>
                     <form>
                         <label for="text">Input Code: </label>
-                        <input type="text" id="code-input" name="varCode"/>
-                        <Button id="join-lobby" className="outline-primary my-button"> Join </Button>
+                        <input type="text" id="code-input" onChange={(e) => changeGameID(e.target.value)}/>
+                        <Button className="outline-primary my-button" onClick={() => handleJoin()}> Join </Button>
                     </form>
                     <br></br>
                     <p> Or </p>
-                    <Button id="create-lobby" className="outline-primary my-button"> Create Lobby</Button>
+                    <Button className="outline-primary my-button" onClick={() => handleCreateLobby()}> Create Lobby</Button>
                 </div>
+                )}
+                {view === "join" && (<Join/>)}
+                {view === "host" && (<Host/>)}
+                </>
             )}
-            
-            
-            
         </main>
         </DefaultLayout>
     );

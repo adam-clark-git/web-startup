@@ -1,3 +1,5 @@
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 export function Host()
 {
     const gameID = 1234;
