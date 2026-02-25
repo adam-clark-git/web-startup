@@ -8,8 +8,7 @@
 * To add to login:
 * To add to gallery:
 * Multiplayer:
-    - This has a lot of stuff to it. I'm not entirely sure how to implement this if I'll be honest, so I'm gonna come up with something really stupid.
-    - Create a js file for hosting vs joining
+    - This has a lot of stuff to it.  Genuinely it's like I'm creating a second game, i think I might have to rethink having multiplayer altogether.
     - Create a js file for simulating connection to a server
 
 ## Things I've given up on
