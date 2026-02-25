@@ -15,7 +15,7 @@ export function Auth({ children }) {
     }
     const logout = async () => {
         localStorage.removeItem("userName");
-        setUserName(null);
+        setUserName("");
         setIsLoggedIn(AuthState.Unauthenticated);
     }
     
