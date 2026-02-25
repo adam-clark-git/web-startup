@@ -51,6 +51,7 @@ export function MultiplayerGame() {
     };
 
     const handlePointerDown = (e) => {
+        if (isFinished) return;
         e.target.setPointerCapture(e.pointerId);
         const ctx = ctxRef.current;
         const pos = getCanvasPos(e);
@@ -62,6 +63,7 @@ export function MultiplayerGame() {
     };
 
     const handlePointerStay = (e) => {
+        if (isFinished) return;
         if (!isDrawing) return;
         const ctx = ctxRef.current;
         const pos = getCanvasPos(e);
@@ -70,6 +72,7 @@ export function MultiplayerGame() {
     };
 
     const handlePointerUp = (e) => {
+        if (isFinished) return;
         setIsDrawing(false);
         try { e.target.releasePointerCapture(e.pointerId); } catch {}
         const ctx = ctxRef.current;
@@ -95,7 +98,11 @@ export function MultiplayerGame() {
         setInfoModal(!infoModal);
     }
     const handleTimerEnd = () => {
-        handleFinish();
+        if (!isFinished) {
+            saveImage();
+            setFinished(true);
+        }
+        setRatingModal(true);
     }
   return (
     <div className="body">
