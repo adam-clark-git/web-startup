@@ -152,12 +152,14 @@ export function Game() {
     async function saveToServer()
     {
         let image;
-        if (finalImage !== null)
+        if (finalImage === null)
         {
+            console.log("Saving final image from canvas");
             image = canvasRef.current.toDataURL("image/png");
         }
         else
         {
+            console.log("savingFinalImage from other image");
             image = finalImage;
         }
         const existing = await loadData("gallery");
