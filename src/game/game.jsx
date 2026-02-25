@@ -8,6 +8,7 @@ import { saveData, loadData } from "../gallery/dataService";
 import { AuthState } from '../login/authState';
 import { AuthContext } from '../login/auth';
 import { Unauthenticated } from '../login/unauthenticated';
+import { getOtherUserImages } from "./serverImages"
 import "./game.css";
 import "../app.css";
 export function Game() {
@@ -24,6 +25,8 @@ export function Game() {
     const [isFinished, setFinished] = useState(false);
     const [paused, setPaused] = useState(false);
     const {isLoggedIn} = useContext(AuthContext);
+    const [otherArt1, setOtherArt1] = useState(null);
+    const [otherArt2, setOtherArt2] = useState(null);
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
     useEffect(() => {
@@ -38,6 +41,13 @@ export function Game() {
         ctx.lineJoin = 'round';
         ctxRef.current = ctx;
         loadLocal(canvas, ctx);
+        async function fetchOtherArt() {
+            const otherArt = await getOtherUserImages();
+            setOtherArt1(otherArt[0]);
+            setOtherArt2(otherArt[1]);
+        }
+        fetchOtherArt();
+        
         // Will get a new prompt on each reload, will be not an issue on final release.
         setPrompt(Prompt());
     }, []);
@@ -240,12 +250,12 @@ export function Game() {
                     </p>
                     <div className="prompt"> {prompt}</div>
                     <div className="art-selection">
-                        <img alt="Other Art1" src="images/duck2.jpg" width="200px"/>
-                        <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
+                        <img alt="Other Art1" src={otherArt1} width="200px"/>
+                        <Button  className="utline-secondary rate-button my-button">👍</Button>
                     </div>
                     <div className="art-selection">
-                        <img alt="Other Art2" src="images/duck3.jpg" width="200px"/>
-                        <button type="button" className="btn btn-outline-secondary rate-button my-button">👍</button>
+                        <img alt="Other Art2" src={otherArt2} width="200px"/>
+                        <Button className="outline-secondary rate-button my-button">👍</Button>
                     </div>
                     {isLoggedIn === AuthState.Unauthenticated && (
                         <Unauthenticated/>
