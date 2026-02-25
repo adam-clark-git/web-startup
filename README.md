@@ -45,7 +45,7 @@ sequenceDiagram
 - Ability to share picture via web server
 - Vote on other users images, and see other people's votes in real time.
 - Pictures are persistently stored.
-- Drawing with Friends, allowing you to see their progress while you work on it yourself.
+- No longer supporting drawing with friends.
 
 ### Technologies
 
@@ -60,7 +60,7 @@ I am going to use the required technologies in the following ways.
     * Displaying other stored images.
     * Updating the prompt for each day.
 - **DB/Login** - Stores user authentication, as well as pictures for each topic. Also stores rating scores for each picture.
-- **WebSocket** - Able to draw with friends, seeing how they are doing on the prompt at the same time as you.
+- **WebSocket** - Changed: Now shows when other users finish the Drawdle for the day.
 
 ## 🚀 AWS deliverable
 
