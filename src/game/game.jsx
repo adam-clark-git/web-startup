@@ -83,7 +83,6 @@ export function Game() {
         ctx.moveTo(pos.x, pos.y);
         setIsDrawing(true);
     };
-
     const handlePointerStay = (e) => {
         if (!isDrawing) return;
         const ctx = ctxRef.current;
@@ -116,6 +115,12 @@ export function Game() {
     {
         const canvas = canvasRef.current;
         setFinalImage(canvas.toDataURL("image/png"));
+    }
+    function clearCanvas() {
+        const canvas = canvasRef.current;
+        const ctx = ctxRef.current;
+        ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+        saveToLocal(false);
     }
     function handleInfoModal()
     {
@@ -207,10 +212,11 @@ export function Game() {
                 <div id="brush-slider">
                     <label> Brush Size</label>
                     <input type="range" name="varBrush" min="5" max="50" step="5" value={brushSize} onChange={(e)=>setBrushSize(Number(e.target.value))} />
+                    <Button className="clear-button" onClick={clearCanvas}> Clear </Button>
                 </div>
             </div>
             <p> Prompt: </p><h4 id="prompt"> {prompt}</h4>
-            <Button className="btn btn-primary my-button" id="submit-art" onClick={() => handleFinish()}> Finished </Button>
+            <Button className="primary my-button" id="submit-art" onClick={() => handleFinish()}> Finished </Button>
         
 
 
