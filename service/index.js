@@ -30,6 +30,15 @@ apiRouter.get('/daily-prompt', (_req, res) => {
 
   res.send({ prompt });
 });
+// Checks if the cookie works.
+apiRouter.get('/auth/me', async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    res.send({ email: user.email });
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+});
 
 apiRouter.post('/auth/create', async (req, res) => {
   if (await findUser('email', req.body.email)) {
