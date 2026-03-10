@@ -19,7 +19,7 @@ export function Main() {
             console.log("Sees lastPlayed");
             console.log(lastPlayed.finished);
             console.log(lastPlayed.date);
-            if (lastPlayed.finished) {
+            if (lastPlayed.finished && lastPlayed.date === currentDate) {
                 console.log("Should display results");
                 words = "Results";
             }
