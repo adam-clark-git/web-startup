@@ -3,13 +3,14 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
-
+const fs = require('fs');
 const authCookieName = 'token';
 
 let users = [];
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
+let artPieces = [];
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 app.use(cookieParser());
 
@@ -17,12 +18,13 @@ app.use(express.static('public'));
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
-const fs = require('fs');
+
 
 apiRouter.get('/daily-prompt', (_req, res) => {
   const prompts = fs.readFileSync('prompts.txt', 'utf8')
-    .split('\n')
-    .filter(line => line.trim() !== '');
+    .split("\n")
+    .map(line => line.trim())
+    .filter(line => line !== '');
 
   const today = new Date();
   const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
@@ -88,13 +90,15 @@ apiRouter.get('/artpieces', verifyAuth, (_req, res) => {
 });
 
 apiRouter.post('/artpiece', verifyAuth, (req, res) => {
-  artPieces = addArtPiece(req.body);
-  res.send(artPieces);
+    console.log('req.body:', req.body);
+    artPieces = addArtPiece(req.body);
+    res.send(artPieces);
 });
 
 
 app.use(function (err, req, res, next) {
-  res.status(500).send({ type: err.name, message: err.message });
+    console.log('ERROR:', err);
+    res.status(500).send({ type: err.name, message: err.message });
 });
 
 app.use((_req, res) => {
