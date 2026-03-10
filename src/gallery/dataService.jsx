@@ -1,10 +1,13 @@
-import React from "react";
-export async function saveData(key,data) {
-    localStorage.setItem(key,JSON.stringify(data));
+export async function saveData(artPiece) {
+    const res = await fetch('/api/artpiece', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(artPiece),
+    });
+    return await res.json();
 };
 
-
-export async function loadData(key) {
-    const item = localStorage.getItem(key);
-    return item ? JSON.parse(item) : [];
+export async function loadData() {
+    const res = await fetch('/api/artpieces');
+    return await res.json();
 };
