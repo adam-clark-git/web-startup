@@ -27,6 +27,7 @@ export function Game() {
     const {isLoggedIn} = useContext(AuthContext);
     const [otherArt1, setOtherArt1] = useState(null);
     const [otherArt2, setOtherArt2] = useState(null);
+    const [showOtherArt, setShowOtherArt] = useState(true);
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
     useEffect(() => {
@@ -43,8 +44,14 @@ export function Game() {
         loadLocal(canvas, ctx);
         async function fetchOtherArt() {
             const otherArt = await getOtherUserImages();
-            setOtherArt1(otherArt[0]);
-            setOtherArt2(otherArt[1]);
+            if (otherArt.length < 2)
+            {
+                setShowOtherArt(false);
+            }
+            else {
+                setOtherArt1(otherArt[0].imageUrl);
+                setOtherArt2(otherArt[1].imageUrl);
+            }
         }
         fetchOtherArt();
         
@@ -251,18 +258,23 @@ export function Game() {
                     <img alt="Your Art" src={finalImage} width="200px"/>
                     <div className="prompt"> {prompt}</div>
                     <p>
-                        You made a piece of art! If you're logged in, it will automatically be saved, and you can even upload it to the web.
-                        While you're here, why don"t you give a thumbs up to some other users art!
+                        You made a piece of art! If you're logged in, it will automatically be saved.
                     </p>
-                    <div className="prompt"> {prompt}</div>
-                    <div className="art-selection">
-                        <img alt="Other Art1" src={otherArt1} width="200px"/>
-                        <Button  className="utline-secondary rate-button my-button">👍</Button>
-                    </div>
-                    <div className="art-selection">
-                        <img alt="Other Art2" src={otherArt2} width="200px"/>
-                        <Button className="outline-secondary rate-button my-button">👍</Button>
-                    </div>
+                    {showOtherArt && (
+                        <div>
+                            <div> Here are other users art when given the same prompt. </div>
+                            <div className="prompt"> {prompt}</div>
+                            <div className="art-selection">
+                                <img alt="Other Art1" src={otherArt1} width="200px"/>
+                                {/*<Button  className="utline-secondary rate-button my-button">👍</Button>*/}
+                            </div>
+                            <div className="art-selection">
+                                <img alt="Other Art2" src={otherArt2} width="200px"/>
+                               {/* <Button className="outline-secondary rate-button my-button">👍</Button>*/}
+                            </div>
+                        </div>
+                    )}
+                    
                     {isLoggedIn === AuthState.Unauthenticated && (
                         <Unauthenticated/>
                     )}
