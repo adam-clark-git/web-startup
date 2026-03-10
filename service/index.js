@@ -21,7 +21,7 @@ app.use(`/api`, apiRouter);
 
 
 apiRouter.get('/daily-prompt', (_req, res) => {
-  const prompts = fs.readFileSync('prompts.txt', 'utf8')
+  const prompts = fs.readFileSync(path.join(__dirname, 'prompts.txt'), 'utf8')
     .split("\n")
     .map(line => line.trim())
     .filter(line => line !== '');
