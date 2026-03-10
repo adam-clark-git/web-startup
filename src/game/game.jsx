@@ -15,7 +15,7 @@ export function Game() {
     /* Modals (boring) */
     const [infoModal, setInfoModal] = useState(false);
     const [finishedModal, setFinishedModal] = useState(false);
-    const [prompt, setPrompt] = useState("");
+    const [prompt, setPrompt] = useState("loading ...");
 
     /* Real Stuff */
     const [brushColor, changeColor] = useState("#000000");
@@ -49,7 +49,7 @@ export function Game() {
         fetchOtherArt();
         
         // Will get a new prompt on each reload, will be not an issue on final release.
-        setPrompt(Prompt());
+        Prompt().then(p => setPrompt(p));
     }, []);
 
     // Only save to server if user becomes authenticated after finishing
