@@ -8,10 +8,10 @@ export function Unauthenticated() {
     const [password, setPassword] = React.useState('');
     const [displayError, setDisplayError] = React.useState(null);
     const handleLogin = async() => {
-        await login(tempUserName);
+        await login(tempUserName, password);
     }
     const handleCreate = async() => {
-        await create(tempUserName);
+        await create(tempUserName, password);
     }
     return (
         <form>
