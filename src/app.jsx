@@ -13,24 +13,12 @@ import { AuthState } from './login/authState';
 import { Auth } from "./login/auth"
 
 export default function App() {
-  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
-  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
-  const [authState, setAuthState] = React.useState(currentAuthState);
   return (
     <Auth>
       <BrowserRouter>
       <Routes>
           <Route path='/' element={<Main />} exact />
-          <Route path='/login' element={
-            <Login 
-              userName={userName}
-              authState={authState}
-              onAuthChange={(userName, authState) => {
-                setAuthState(authState);
-                setUserName(userName);
-              }}
-            />} 
-          />
+          <Route path='/login' element={<Login/>} />
           <Route path='/gallery' element={<Gallery />} />
           <Route path='/game' element={<Game />} />
           <Route path='/multiplayer' element={<Multiplayer />} />
