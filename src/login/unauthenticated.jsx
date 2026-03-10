@@ -4,8 +4,8 @@ import { AuthContext } from './auth';
 
 export function Unauthenticated() {
     const {userName, login, create} = useContext(AuthContext);
-    const [tempUserName, setTempUserName] = React.useState(null);
-    const [password, setPassword] = React.useState('');
+    const [tempUserName, setTempUserName] = React.useState("");
+    const [password, setPassword] = React.useState("");
     const [displayError, setDisplayError] = React.useState(null);
     const handleLogin = async() => {
         await login(tempUserName, password);
