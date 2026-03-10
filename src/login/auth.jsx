@@ -2,25 +2,42 @@ import React, { createContext, useState } from 'react';
 import { AuthState } from './authState';
 export const AuthContext = createContext();
 export function Auth({ children }) {
-    const [isLoggedIn, setIsLoggedIn] = useState(() => {
-        const token = localStorage.getItem('userName');
-        return token ? AuthState.Authenticated : AuthState.Unauthenticated;
-    });
-    const [userName, setUserName] = useState(() => localStorage.getItem("userName"));
+    const [isLoggedIn, setIsLoggedIn] = useState(AuthState.Unauthenticated);
+    const [userName, setUserName] = useState("");
 
-    const login = async (newUserName) => {
-        localStorage.setItem("userName", newUserName);
-        setUserName(newUserName)
-        setIsLoggedIn(AuthState.Authenticated);
+    const login = async (email, password) => {
+        const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+        });
+        if (res.ok) {
+            const data = await res.json();
+            setUserName(data.email);
+            setIsLoggedIn(AuthState.Authenticated);
+        } else {
+            throw new Error('Login failed');
+        }
     }
-    const create = async (newUserName) => {
-        login(userName)
-    }
+    const create = async (email, password) => {
+        const res = await fetch('/api/auth/create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+        });
+        if (res.ok) {
+            const data = await res.json();
+            setUserName(data.email);
+            setIsLoggedIn(AuthState.Authenticated);
+        } else {
+            throw new Error('Account creation failed');
+        }
+    };
     const logout = async () => {
-        localStorage.removeItem("userName");
-        setUserName("");
+        await fetch('/api/auth/logout', { method: 'DELETE' });
+        setUserName('');
         setIsLoggedIn(AuthState.Unauthenticated);
-    }
+    };
     
     return (
         <AuthContext.Provider value={{ isLoggedIn, login, create, userName, logout}}>
