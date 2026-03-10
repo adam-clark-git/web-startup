@@ -4,6 +4,16 @@ export const AuthContext = createContext();
 export function Auth({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(AuthState.Unauthenticated);
     const [userName, setUserName] = useState("");
+    useEffect(() => {
+        fetch('/api/auth/me')
+        .then(res => res.ok ? res.json() : null)
+        .then(data => {
+        if (data) {
+            setUserName(data.email);
+            setIsLoggedIn(AuthState.Authenticated);
+        }
+        });
+    }, []);
 
     const login = async (email, password) => {
         const res = await fetch('/api/auth/login', {
