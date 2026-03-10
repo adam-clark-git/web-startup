@@ -11,7 +11,7 @@ export function Gallery() {
     const [itemsShown, setItemsShown] = useState(5);
     useEffect(() => {
         async function fetchData() {
-            setGalleryItems(await loadData("gallery"));
+            setGalleryItems(await loadData());
         }
         fetchData();
     }, []);

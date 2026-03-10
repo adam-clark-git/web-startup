@@ -162,10 +162,8 @@ export function Game() {
             console.log("savingFinalImage from other image");
             image = finalImage;
         }
-        const existing = await loadData("gallery");
         const now = new Date();
-        existing.push({ date:now.toLocaleDateString(), artLink:image, prompt:prompt})
-        await saveData("gallery",existing)
+        await saveData({ date:now.toLocaleDateString(), imageUrl:image, prompt:prompt})
     }
 
     const handleTimerEnd = () => {
