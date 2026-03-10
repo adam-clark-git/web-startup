@@ -4,6 +4,7 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 const fs = require('fs');
+const path = require('path');
 const authCookieName = 'token';
 
 let users = [];
@@ -90,7 +91,6 @@ apiRouter.get('/artpieces', verifyAuth, (_req, res) => {
 });
 
 apiRouter.post('/artpiece', verifyAuth, (req, res) => {
-    console.log('req.body:', req.body);
     artPieces = addArtPiece(req.body);
     res.send(artPieces);
 });
