@@ -1,5 +1,5 @@
-export function Prompt()
-{
-    const prompts = ["Springtime", "Fortnite", "Bloodbath", "Friendship", "Grief", "Quagmire", "Star Wars"];
-    return prompts[Math.floor(Math.random() * prompts.length)];
+export async function Prompt() {
+    const res = await fetch('/api/daily-prompt');
+    const data = await res.json();
+    return data.prompt;
 }
