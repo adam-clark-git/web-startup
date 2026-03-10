@@ -11,7 +11,8 @@ export function Gallery() {
     const [itemsShown, setItemsShown] = useState(5);
     useEffect(() => {
         async function fetchData() {
-            setGalleryItems(await loadData());
+            const data = await loadData();
+            setGalleryItems(Array.isArray(data) ? data : []);
         }
         fetchData();
     }, []);
@@ -33,7 +34,7 @@ export function Gallery() {
                 <React.Fragment key={index}>
                     <li>
                         <h3 className="date"> {artPiece.date}</h3>
-                        <img className="gallery-image" src={artPiece.artLink} width="200px"></img>
+                        <img className="gallery-image" src={artPiece.imageUrl} width="200px"></img>
                         <div className="prompt">Prompt: {artPiece.prompt}</div>
                     </li>
                 </React.Fragment>
