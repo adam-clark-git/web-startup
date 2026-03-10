@@ -22,10 +22,39 @@ app.use(`/api`, apiRouter);
 
 
 apiRouter.get('/daily-prompt', (_req, res) => {
-  const prompts = fs.readFileSync(path.join(__dirname, 'prompts.txt'), 'utf8')
-    .split("\n")
-    .map(line => line.trim())
-    .filter(line => line !== '');
+  const prompts = [
+    "Star Wars",
+    "Bloodbath",
+    "Heartbreak",
+    "A Cold Autumn Morning",
+    "Spring",
+    "Movie Theater",
+    "Darkness",
+    "Joy",
+    "Apathy",
+    "Grocery Store",
+    "Medieval",
+    "Ancient",
+    "Forgotten",
+    "A Warm Sunset",
+    "Grief",
+    "Terror",
+    "A Snug Shoe",
+    "A fan blows against the wind",
+    "Clock strikes midnight",
+    "Rag on a countertop",
+    "Snails",
+    "Crickets",
+    "Ants",
+    "Rats",
+    "Bats",
+    "The video game minecraft",
+    "The inevitable approach of death",
+    "Dogs!!",
+    "Cats!",
+    "Eldritch Horror",
+    "Pleasure",
+  ];
 
   const today = new Date();
   const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
