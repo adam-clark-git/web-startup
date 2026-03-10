@@ -17,6 +17,19 @@ app.use(express.static('public'));
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+const fs = require('fs');
+
+apiRouter.get('/daily-prompt', (_req, res) => {
+  const prompts = fs.readFileSync('prompts.txt', 'utf8')
+    .split('\n')
+    .filter(line => line.trim() !== '');
+
+  const today = new Date();
+  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+  const prompt = prompts[dayOfYear % prompts.length];
+
+  res.send({ prompt });
+});
 
 apiRouter.post('/auth/create', async (req, res) => {
   if (await findUser('email', req.body.email)) {
