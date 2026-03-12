@@ -80,6 +80,9 @@ ul {
     padding-left: 0 !important;
     margin-left: 0
 }
+.funfact {
+    margin: 0 auto;
+}
 
 @media (hover: hover) and (pointer: fine) {
     .logo:hover {
