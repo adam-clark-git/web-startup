@@ -114,8 +114,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] **Node.js/Express HTTP service** - Installed Express with NPM. Default port on 4000.js`.
 - [x] **Static middleware for frontend** - Simple endpoints in `service/index`.
-- [ ] **Calls to third party endpoints** - 
-- [x] **Backend service endpoints** - Simple endpoints in `service/index` for auth and for fetching images in gallery
+- [x] **Calls to third party endpoints** - Now calls the third party APi for fun facts in gallery.
+- [x] **Backend service endpoints** - Simple endpoints in `service/index` for auth and for fetching images in gallery and on the game finished screen.
 - [x] **Frontend calls service endpoints** - All mocked functionality removed from the frontend and replaced with calls to the service.
 - [x] **Supports registration, login, logout, and restricted endpoint** - Fully support authentication and restrict access to scores.
 
