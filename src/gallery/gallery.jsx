@@ -4,6 +4,7 @@ import { DefaultLayout } from '../layouts/defaultLayout';
 import { AuthState } from '../login/authState';
 import { AuthContext } from '../login/auth';
 import { saveData, loadData } from "./dataService";
+import { FactOfTheDay } from "./funfact";
 
 export function Gallery() {
     const {isLoggedIn} = useContext(AuthContext);
@@ -43,10 +44,12 @@ export function Gallery() {
         );
     };
     return (
-        <DefaultLayout> 
+        <DefaultLayout>
+            <FactOfTheDay/>
             {isLoggedIn === AuthState.Authenticated && (
                 <main id="gallery">
                 <h2> Gallery </h2>
+
                 <ul>
                     {displayArt()}
                 </ul>
