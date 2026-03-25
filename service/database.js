@@ -17,31 +17,30 @@ const imageCollection = db.collection('image');
     process.exit(1);
   }
 })();
- 
+
 function getUser(email) {
   return userCollection.findOne({ email: email });
 }
- 
 function getUserByToken(token) {
   return userCollection.findOne({ token: token });
 }
- 
+
 async function addUser(user) {
   await userCollection.insertOne(user);
 }
- 
+
 async function updateUser(user) {
   await userCollection.updateOne({ email: user.email }, { $set: user });
 }
- 
+
 async function updateUserRemoveAuth(user) {
   await userCollection.updateOne({ email: user.email }, { $unset: { token: 1 } });
 }
- 
-async function addImage({ email, date, prompt, imageUrl }) {
-  return imageCollection.insertOne({ email, date, prompt, imageUrl });
+
+async function addImage({ email, date, prompt, imageUrl, s3Key }) {
+  return imageCollection.insertOne({ email, date, prompt, imageUrl, s3Key });
 }
- 
+
 function getImages(email) {
   const query = email ? { email: email } : {};
   const options = {
@@ -51,7 +50,19 @@ function getImages(email) {
   const cursor = imageCollection.find(query, options);
   return cursor.toArray();
 }
- 
+
+function getUserImageCount(email) {
+  return imageCollection.countDocuments({ email: email });
+}
+
+function getOldestImage(email) {
+  return imageCollection.findOne({ email: email }, { sort: { date: 1 } });
+}
+
+async function deleteImage(id) {
+  return imageCollection.deleteOne({ _id: id });
+}
+
 module.exports = {
   getUser,
   getUserByToken,
@@ -60,4 +71,7 @@ module.exports = {
   updateUserRemoveAuth,
   addImage,
   getImages,
+  getUserImageCount,
+  getOldestImage,
+  deleteImage,
 };
