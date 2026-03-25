@@ -1,6 +1,6 @@
 import React from "react";
-export async function getOtherUserImages() 
+export async function getOtherUserImages(date) 
 {
-    const res = await fetch('/api/artpieces');
+    const res = await fetch(`/api/artpieces/date/${date}`);
     return await res.json();
 }

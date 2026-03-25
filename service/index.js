@@ -125,6 +125,10 @@ apiRouter.get('/artpieces', verifyAuth, async (_req, res) => {
   const images = await db.getImages();
   res.send(images);
 });
+apiRouter.get('/artpieces/date/:date', async (req, res) => {
+  const images = await db.getImagesByDate(req.params.date);
+  res.send(images);
+});
 
 apiRouter.post('/artpiece', verifyAuth, async (req, res) => {
   const { prompt, date, imageUrl } = req.body;

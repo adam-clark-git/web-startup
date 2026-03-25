@@ -62,6 +62,9 @@ function getOldestImage(email) {
 async function deleteImage(id) {
   return imageCollection.deleteOne({ _id: id });
 }
+function getImagesByDate(date) {
+  return imageCollection.find({ date: date }).toArray();
+}
 
 module.exports = {
   getUser,
@@ -74,4 +77,5 @@ module.exports = {
   getUserImageCount,
   getOldestImage,
   deleteImage,
+  getImagesByDate,
 };
