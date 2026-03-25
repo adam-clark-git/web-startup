@@ -43,13 +43,18 @@ export function Game() {
         ctxRef.current = ctx;
         loadLocal(canvas, ctx);
         async function fetchOtherArt() {
-            const date = new Date().toLocaleDateString().replace(/\//g, '-');
+            const date = new Date().toLocaleDateString();
             const otherArt = await getOtherUserImages(date);
             if (otherArt.length < 2)
             {
                 setShowOtherArt(false);
             }
             else {
+                const firstIndex = Math.floor(Math.random() * images.length);
+                let secondIndex;
+                do {
+                    secondIndex = Math.floor(Math.random() * images.length);
+                } while (secondIndex === firstIndex);
                 setOtherArt1(otherArt[0].imageUrl);
                 setOtherArt2(otherArt[1].imageUrl);
             }
