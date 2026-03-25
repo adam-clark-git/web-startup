@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
-const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+const { S3Client, PutObjectCommand, DeleteObjectCommand } = require('@aws-sdk/client-s3');
 const db = require('./database.js');
 const authCookieName = 'token';
 
@@ -11,11 +11,10 @@ const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 const s3 = new S3Client({ region: process.env.AWS_REGION });
 const BUCKET_NAME = process.env.S3_BUCKET_NAME;
+const MAX_IMAGES_PER_USER = 365;
 
 app.use(express.json({ limit: '10mb' }));
-
 app.use(cookieParser());
-
 app.use(express.static('public'));
 
 var apiRouter = express.Router();
@@ -78,7 +77,6 @@ apiRouter.post('/auth/create', async (req, res) => {
     res.status(409).send({ msg: 'Existing user' });
   } else {
     const user = await createUser(req.body.email, req.body.password);
-
     setAuthCookie(res, user.token);
     res.send({ email: user.email });
   }
@@ -131,8 +129,18 @@ apiRouter.post('/artpiece', verifyAuth, async (req, res) => {
   const { prompt, date, imageUrl } = req.body;
 
   try {
-    const s3Url = await uploadImageToS3(imageUrl, req.user.email, date);
-    await db.addImage({ email: req.user.email, date, prompt, imageUrl: s3Url });
+    // Purge oldest image if user is at the limit
+    const count = await db.getUserImageCount(req.user.email);
+    if (count >= MAX_IMAGES_PER_USER) {
+      const oldest = await db.getOldestImage(req.user.email);
+      if (oldest) {
+        await s3.send(new DeleteObjectCommand({ Bucket: BUCKET_NAME, Key: oldest.s3Key }));
+        await db.deleteImage(oldest._id);
+      }
+    }
+
+    const { s3Key, s3Url } = await uploadImageToS3(imageUrl, req.user.email, date);
+    await db.addImage({ email: req.user.email, date, prompt, imageUrl: s3Url, s3Key });
     res.send({ msg: 'Image saved successfully' });
   } catch (err) {
     console.error('Failed to save image:', err);
@@ -158,16 +166,19 @@ async function uploadImageToS3(base64Image, email, date) {
   const mimeType = mimeMatch ? mimeMatch[1] : 'image/png';
   const extension = mimeType.split('/')[1];
 
-  const key = `artpieces/${email}/${date}-${uuid.v4()}.${extension}`;
+  const s3Key = `artpieces/${email}/${date}-${uuid.v4()}.${extension}`;
 
   await s3.send(new PutObjectCommand({
     Bucket: BUCKET_NAME,
-    Key: key,
+    Key: s3Key,
     Body: buffer,
     ContentType: mimeType,
   }));
 
-  return `https://${BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`;
+  return {
+    s3Key,
+    s3Url: `https://${BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${s3Key}`,
+  };
 }
 
 async function createUser(email, password) {
