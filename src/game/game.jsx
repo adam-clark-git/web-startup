@@ -50,10 +50,10 @@ export function Game() {
                 setShowOtherArt(false);
             }
             else {
-                const firstIndex = Math.floor(Math.random() * images.length);
+                const firstIndex = Math.floor(Math.random() * otherArt.length);
                 let secondIndex;
                 do {
-                    secondIndex = Math.floor(Math.random() * images.length);
+                    secondIndex = Math.floor(Math.random() * otherArt.length);
                 } while (secondIndex === firstIndex);
                 setOtherArt1(otherArt[0].imageUrl);
                 setOtherArt2(otherArt[1].imageUrl);
