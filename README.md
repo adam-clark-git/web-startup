@@ -121,10 +121,10 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ## 🚀 DB deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
+For this deliverable I did the following. I created a database in MongoDB, along with an S3 bucket, cause I'm goated.
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores data in MongoDB** - Stores User data in MongoDB. This includes sign in information, as well as the links to images and their metadata. The actual image is stored in an s3 bucket.
+- [x] **Stores credentials in MongoDB** - It also stores all credentials inside mongodb.
 
 ## 🚀 WebSocket deliverable
 
