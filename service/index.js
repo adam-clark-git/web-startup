@@ -6,6 +6,7 @@ const app = express();
 const { S3Client, PutObjectCommand, DeleteObjectCommand } = require('@aws-sdk/client-s3');
 const db = require('./database.js');
 const authCookieName = 'token';
+require('dotenv').config();
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -166,7 +167,8 @@ async function uploadImageToS3(base64Image, email, date) {
   const mimeType = mimeMatch ? mimeMatch[1] : 'image/png';
   const extension = mimeType.split('/')[1];
 
-  const s3Key = `artpieces/${email}/${date}-${uuid.v4()}.${extension}`;
+  const sanitizedDate = date.replace(/\//g, '-');
+  const s3Key = `artpieces/${email}/${sanitizedDate}-${uuid.v4()}.${extension}`;
 
   await s3.send(new PutObjectCommand({
     Bucket: BUCKET_NAME,
