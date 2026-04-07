@@ -130,8 +130,8 @@ For this deliverable I did the following. I created a database in MongoDB, along
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - Backend is listening for websocket
+- [x] **Frontend makes WebSocket connection** - Frontend sends an event when a user completes.
+- [x] **Data sent over WebSocket connection** - Sends the username of the person who completed.
+- [x] **WebSocket data displayed** - The person who completed is displayed if the user is currently drawing.
+- [x] **Application is fully functional** - THE APPLICATION IS FULLY FUNCTIONAL!!!!!
