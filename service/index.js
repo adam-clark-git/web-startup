@@ -5,6 +5,7 @@ const uuid = require('uuid');
 const app = express();
 const { S3Client, PutObjectCommand, DeleteObjectCommand } = require('@aws-sdk/client-s3');
 const db = require('./database.js');
+const { peerProxy } = require('./peerProxy.js');
 const authCookieName = 'token';
 require('dotenv').config();
 
@@ -211,3 +212,5 @@ function setAuthCookie(res, authToken) {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+peerProxy(httpService);
