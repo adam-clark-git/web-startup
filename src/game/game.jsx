@@ -12,6 +12,24 @@ import { getOtherUserImages } from "./serverImages";
 import { DrawingEvent, DrawingNotifier } from './gameNotifier.js';
 import "./game.css";
 import "../app.css";
+function showNotification(message) {
+  const notification = document.createElement('div');
+  notification.textContent = message;
+  notification.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    z-index: 1000;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  `;
+  document.body.appendChild(notification);
+  setTimeout(() => notification.remove(), 4000);
+}
 export function Game() {
     /* Modals (boring) */
     const [infoModal, setInfoModal] = useState(false);
@@ -25,7 +43,7 @@ export function Game() {
     const [finalImage, setFinalImage] = useState(null);
     const [isFinished, setFinished] = useState(false);
     const [paused, setPaused] = useState(false);
-    const {isLoggedIn} = useContext(AuthContext);
+    const {isLoggedIn, userName} = useContext(AuthContext);
     const [otherArt1, setOtherArt1] = useState(null);
     const [otherArt2, setOtherArt2] = useState(null);
     const [showOtherArt, setShowOtherArt] = useState(true);
@@ -82,9 +100,10 @@ export function Game() {
         return () => clearInterval(interval);
     }, [isFinished]);
     useEffect(() => {
-    const handler = (event) => {
+        const handler = (event) => {
             if (event.type === DrawingEvent.DrawingFinished) {
-            showNotification(" ${event.from} just finished their drawing!");
+                console.log('Showing notification for:', event.from);
+                showNotification(` ${event.from} just finished their drawing!`);
             }
         };
 
@@ -131,7 +150,7 @@ export function Game() {
         setFinished(true);
         setFinishedModal(true);
         saveToLocal(true);
-        DrawingNotifier.broadcastEvent(currentUser, DrawingEvent.DrawingFinished, { prompt: prompt });
+        DrawingNotifier.broadcastEvent(userName, DrawingEvent.DrawingFinished, { prompt: prompt });
         if (isLoggedIn === AuthState.Authenticated) {
             saveToServer();
         }
