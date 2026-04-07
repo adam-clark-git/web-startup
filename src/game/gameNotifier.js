@@ -21,6 +21,7 @@ class DrawingEventNotifier {
     this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
 
     this.socket.onopen = () => {
+      console.log('WebSocket connected!');
       this.receiveEvent(new EventMessage('System', DrawingEvent.System, { msg: 'connected' }));
     };
 
@@ -34,10 +35,12 @@ class DrawingEventNotifier {
         this.receiveEvent(event);
       } catch {}
     };
+    
   }
 
   broadcastEvent(from, type, value) {
     const event = new EventMessage(from, type, value);
+    console.log('Sending event:', event);
     this.socket.send(JSON.stringify(event));
   }
 
@@ -50,9 +53,12 @@ class DrawingEventNotifier {
   }
 
   receiveEvent(event) {
+    console.log('Received event:', event);
     this.handlers.forEach((handler) => handler(event));
   }
 }
 
 const DrawingNotifier = new DrawingEventNotifier();
+window.DrawingNotifier = DrawingNotifier; // add this line
+window.DrawingEvent = DrawingEvent; 
 export { DrawingEvent, DrawingNotifier };
