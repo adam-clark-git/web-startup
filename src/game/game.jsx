@@ -8,7 +8,8 @@ import { saveData, loadData } from "../gallery/dataService";
 import { AuthState } from '../login/authState';
 import { AuthContext } from '../login/auth';
 import { Unauthenticated } from '../login/unauthenticated';
-import { getOtherUserImages } from "./serverImages"
+import { getOtherUserImages } from "./serverImages";
+import { DrawingEvent, DrawingNotifier } from './gameNotifier.js';
 import "./game.css";
 import "../app.css";
 export function Game() {
@@ -80,6 +81,16 @@ export function Game() {
 
         return () => clearInterval(interval);
     }, [isFinished]);
+    useEffect(() => {
+    const handler = (event) => {
+            if (event.type === DrawingEvent.DrawingFinished) {
+            showNotification(" ${event.from} just finished their drawing!");
+            }
+        };
+
+        DrawingNotifier.addHandler(handler);
+        return () => DrawingNotifier.removeHandler(handler);
+    }, []);
 
     const getCanvasPos = (e) => {
         const rect = canvasRef.current.getBoundingClientRect();
@@ -120,6 +131,7 @@ export function Game() {
         setFinished(true);
         setFinishedModal(true);
         saveToLocal(true);
+        DrawingNotifier.broadcastEvent(currentUser, DrawingEvent.DrawingFinished, { prompt: prompt });
         if (isLoggedIn === AuthState.Authenticated) {
             saveToServer();
         }
