@@ -287,7 +287,7 @@ export function Game() {
                     <Button className="btn btn-secondary" onClick={() => handleInfoModal()}>Close</Button>
                 </Modal.Footer>
             </Modal>
-            <Modal show={finishedModal} onHide={() => setFinishedModal(false)}>
+            <Modal show={finishedModal} onHide={() => {}} backdrop="static" keyboard={false}>
                 <Modal.Header>
                     <Modal.Title> Great Job! </Modal.Title>
                 </Modal.Header>
