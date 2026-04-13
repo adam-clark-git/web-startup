@@ -8,6 +8,6 @@ export async function saveData(artPiece) {
 };
 
 export async function loadData() {
-    const res = await fetch('/api/artpieces');
+    const res = await fetch('/api/artpieces/mine');
     return await res.json();
 };
