@@ -19,9 +19,11 @@ const imageCollection = db.collection('image');
 })();
 
 function getUser(email) {
+  if (!email) return null;
   return userCollection.findOne({ email: email });
 }
 function getUserByToken(token) {
+  if (!token) return null;
   return userCollection.findOne({ token: token });
 }
 

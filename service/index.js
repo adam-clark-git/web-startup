@@ -77,18 +77,26 @@ apiRouter.get('/auth/me', async (req, res) => {
 });
 
 apiRouter.post('/auth/create', async (req, res) => {
-  if (await db.getUser(req.body.email)) {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).send({ msg: 'Email and password required' });
+  }
+  if (await db.getUser(email)) {
     res.status(409).send({ msg: 'Existing user' });
   } else {
-    const user = await createUser(req.body.email, req.body.password);
+    const user = await createUser(email, password);
     setAuthCookie(res, user.token);
     res.send({ email: user.email });
   }
 });
 
 apiRouter.post('/auth/login', async (req, res) => {
-  const user = await db.getUser(req.body.email);
-  if (user && await bcrypt.compare(req.body.password, user.password)) {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).send({ msg: 'Email and password required' });
+  }
+  const user = await db.getUser(email);
+  if (user && await bcrypt.compare(password, user.password)) {
     user.token = uuid.v4();
     await db.updateUser(user);
     setAuthCookie(res, user.token);
