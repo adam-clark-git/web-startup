@@ -66,7 +66,9 @@ apiRouter.get('/daily-prompt', (_req, res) => {
 });
 
 apiRouter.get('/auth/me', async (req, res) => {
-  const user = await db.getUserByToken(req.cookies[authCookieName]);
+  const token = req.cookies[authCookieName];
+  if (!token) return res.status(401).send({ msg: 'Unauthorized' });
+  const user = await db.getUserByToken(token);
   if (user) {
     res.send({ email: user.email });
   } else {
@@ -101,12 +103,20 @@ apiRouter.delete('/auth/logout', async (req, res) => {
   if (user) {
     await db.updateUserRemoveAuth(user);
   }
-  res.clearCookie(authCookieName);
+  res.clearCookie(authCookieName, {
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
   res.status(204).end();
 });
 
 const verifyAuth = async (req, res, next) => {
-  const user = await db.getUserByToken(req.cookies[authCookieName]);
+  const token = req.cookies[authCookieName];
+  if (!token) {
+    return res.status(401).send({ msg: 'Unauthorized' });
+  }
+  const user = await db.getUserByToken(token);
   if (user) {
     req.user = user;
     next();

@@ -11,6 +11,9 @@ export function Auth({ children }) {
         if (data) {
             setUserName(data.email);
             setIsLoggedIn(AuthState.Authenticated);
+        } else {
+            setUserName('');
+            setIsLoggedIn(AuthState.Unauthenticated);
         }
         });
     }, []);
